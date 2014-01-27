@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="GTTrans" default="copiar" basedir=".">
+    <target name="copiar">
+        <copy todir="E:\\Servidores\\jboss-as-7.1.1.Final\\standalone\\deployments\\gttrans.war\\mobile">
+           <fileset dir="E:\\Sistemas\\cinbesa\\gttrans\\GTTrans\\public_html"/>
+        </copy>
+    </target>
+</project>
