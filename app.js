@@ -21,6 +21,8 @@ Ext.application({
     controllers: [
         'HomeController',
         'MeusDadosController',
+        'ComoUsarController',
+        'SobreController',
         'SolicitacaoController'
     ],
             

@@ -18,6 +18,10 @@ Ext.define('CuidaBelem.view.MeusDadosView', {
     xtype: 'meusDadosView',
     id: 'meusDadosView',
 
+    requires: [
+        'Ext.MessageBox'
+    ],
+
     config: {
         layout: {
             align: 'center',
@@ -63,7 +67,10 @@ Ext.define('CuidaBelem.view.MeusDadosView', {
                 xtype: 'button',
                 ui: 'confirm',
                 width: '95%',
-                text: 'Salvar'
+                text: 'Salvar',
+                handler: function() {
+                    Ext.Msg.alert('Atenção', 'Em desenvolvimento.', Ext.emptyFn);
+                }
             }
         ]
     }

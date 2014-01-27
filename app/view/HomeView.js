@@ -50,8 +50,9 @@ Ext.define('CuidaBelem.view.HomeView', {
             },
             {
                 xtype: 'tabpanel',
-                docked: 'bottom',
-                height: '95%',
+                //docked: 'bottom',
+                height: '100%',
+                width: '100%',
                 items: [
                     {
                         id: 'listSolicitacoes',
@@ -237,7 +238,7 @@ Ext.define('CuidaBelem.view.HomeView', {
                     scrollable: false,
                     layout: {
                         pack: 'justify',
-                        align: 'center'
+                        type: 'hbox'
                     }
                 }
             }

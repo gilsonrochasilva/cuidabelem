@@ -7,10 +7,14 @@ Ext.define('CuidaBelem.view.MainView', {
     requires : [
         'CuidaBelem.view.HomeView',
         'CuidaBelem.view.MeusDadosView',
+        'CuidaBelem.view.ComoUsarView',
+        'CuidaBelem.view.SobreView',
         'CuidaBelem.view.SolicitacaoView'
     ],
 
     config: {
+
+        height: '100%',
 
         layout: {
             type: 'card'
@@ -19,7 +23,9 @@ Ext.define('CuidaBelem.view.MainView', {
         items : [
             { xtype : 'homeView' },
             { xtype : 'meusDadosView' },
-            { xtype : 'solicitacaoView' }
+            { xtype : 'solicitacaoView' },
+            { xtype : 'comoUsarView' },
+            { xtype : 'sobreView' }
         ]
     },
     

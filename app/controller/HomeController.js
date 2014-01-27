@@ -5,11 +5,21 @@ Ext.define('CuidaBelem.controller.HomeController', {
         refs: {
             mainView : "#mainView",
             btMeusDados : "#btMeusDados",
+            btComoUsar : "#btComoUsar",
+            btSobre : "#btSobre",
             listSolicitacoes: '#listSolicitacoes'
         },
         control: {
             btMeusDados : {
                 tap : 'abrirMeusDados'
+            },
+
+            btComoUsar : {
+                tap : 'abrirComoUsar'
+            },
+
+            btSobre : {
+                tap : 'abrirSobre'
             },
 
             listSolicitacoes : {
@@ -51,6 +61,16 @@ Ext.define('CuidaBelem.controller.HomeController', {
     abrirMeusDados : function () {
         Ext.Viewport.hideMenu('left');
         this.getMainView().avancar(1);
+    },
+
+    abrirComoUsar : function () {
+        Ext.Viewport.hideMenu('left');
+        this.getMainView().avancar(3);
+    },
+
+    abrirSobre : function () {
+        Ext.Viewport.hideMenu('left');
+        this.getMainView().avancar(4);
     },
 
     novaSolicitacao: function(view, record) {

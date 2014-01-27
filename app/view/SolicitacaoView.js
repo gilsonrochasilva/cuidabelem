@@ -18,6 +18,10 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
     xtype: 'solicitacaoView',
     id: 'solicitacaoView',
 
+    requires: [
+        'Ext.MessageBox'
+    ],
+
     config: {
         id: 'solicitacaoView',
         layout: {
@@ -95,7 +99,10 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                 xtype: 'button',
                 ui: 'confirm',
                 width: '95%',
-                text: 'Enviar'
+                text: 'Enviar',
+                handler: function() {
+                    Ext.Msg.alert('Atenção', 'Em desenvolvimento.', Ext.emptyFn);
+                }
             }
         ]
     }
