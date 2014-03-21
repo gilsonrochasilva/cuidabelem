@@ -59,59 +59,16 @@ Ext.define('CuidaBelem.view.HomeView', {
                         xtype: 'list',
                         title: 'Solicitações',
                         iconCls: 'more',
-                        data: [
-                            {
-                                name: 'Sinal de Trânsito',
-                                description: 'Reparo em sinal de trânsito com defeito'
-                            },
-                            {
-                                name: 'Iluminação Pública',
-                                description: 'Reparo de lâmpada apagada, piscando ou acessa durante o dia'
-                            },
-                            {
-                                name: 'Buraco nas vias',
-                                description: 'Reparo de buraco na pista/rua, na calçada ou na ciclovia'
-                            },
-                            {
-                                name: 'Dengue',
-                                description: 'Vistoria em possíveis focos de Dengue'
-                            },
-                            {
-                                name: 'Poda/Retirada de Árvore',
-                                description: 'Pode e retirada de árvores em logradouro público'
-                            },
-                            {
-                                name: 'Desobstrução de bueiros',
-                                description: 'Limpeza de bueiros e galerias de águas pluviais'
-                            },
-                            {
-                                name: 'Estacionamento Irregular',
-                                description: 'Fiscalização de Veículos estacionados em locais públicos'
-                            },
-                            {
-                                name: 'Ocupação Irregular',
-                                description: 'Fiscalização do uso irregular de áreas públicas'
-                            },
-                            {
-                                name: 'Remoção de entulho',
-                                description: 'Remoção gratuita de entulho e objetos inservíveis de residências'
-                            },
-                            {
-                                name: 'Limpeza Urbana',
-                                description: 'Limpeza de resíduos deixados no logradouro'
-                            },
-                            {
-                                name: 'Outros',
-                                description: 'Para outras solicitações'
-                            }
-                        ],
+                        store: 'ServicosStore',
                         width: '100%',
                         itemTpl: [
                             '<div>',
-                            '    {name} <br/>',
-                            '    <span style="font-size: 12px;">{description}</span>',
+                            '    {nome} <br/>',
+                            '    <span style="font-size: 12px;">{descricao}</span>',
                             '</div>'
-                        ]
+                        ],
+                        ui: 'round',
+                        emptyText: 'Nenhum Serviço Disponível'
                     },
                     {
                         xtype: 'map',

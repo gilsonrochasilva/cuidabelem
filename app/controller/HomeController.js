@@ -30,6 +30,8 @@ Ext.define('CuidaBelem.controller.HomeController', {
     },
     
     launch: function() {
+        var servicosStore = Ext.getStore('ServicosStore');
+        servicosStore.load();
         /*var me = this;
 
         document.addEventListener("backbutton",

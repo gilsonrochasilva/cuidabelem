@@ -28,12 +28,14 @@ Ext.application({
             
     models: [
         'InteressadoLocal',
-        'TblInteressados'
+        'TblInteressados',
+        'Servico'
     ],
             
     stores: [
         'InteressadoLocalStore',
-        'InteressadoStore'
+        'InteressadoStore',
+        'ServicosStore'
     ],
             
     isIconPrecomposed: true,
