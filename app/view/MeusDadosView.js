@@ -42,37 +42,87 @@ Ext.define('CuidaBelem.view.MeusDadosView', {
                 ]
             },
             {
+                id: 'formMeusDados',
                 xtype: 'fieldset',
                 width: '95%',
                 items: [
                     {
-                        xtype: 'textfield',
-                        label: 'Nome',
-                        labelAlign: 'top'
+                        xtype: 'hiddenfield',
+                        itemId: 'idInteressado'
                     },
                     {
                         xtype: 'numberfield',
-                        label: 'Telefone',
-                        labelAlign: 'top'
+                        id: 'cpfMeusDados',
+                        itemId: 'nrCpfCnpj',
+                        label: 'CPF',
+                        labelAlign: 'top',
+                        required: true
+                    },
+                    {
+                        xtype: 'textfield',
+                        itemId: 'nmInteressado',
+                        label: 'Nome',
+                        labelAlign: 'top',
+                        required: true
                     },
                     {
                         xtype: 'emailfield',
+                        itemId: 'dsEmail',
                         label: 'E-mail',
                         labelAlign: 'top',
-                        placeHolder: 'email@exemplo.com.br'
+                        placeHolder: 'email@exemplo.com.br',
+                        required: true
+                    },
+                    {
+                        xtype: 'textfield',
+                        itemId: 'dsEndereco',
+                        label: 'Endereço',
+                        labelAlign: 'top',
+                        required: true
                     }
                 ]
             },
             {
+                id: 'btSalvarMeusDados',
                 xtype: 'button',
                 ui: 'confirm',
                 width: '95%',
-                text: 'Salvar',
-                handler: function() {
-                    Ext.Msg.alert('Atenção', 'Em desenvolvimento.', Ext.emptyFn);
-                }
+                text: 'Salvar'
             }
         ]
+    },
+
+    setInteressado: function(_interessado) {
+        if(_interessado != null) {
+            var formMeusDados = Ext.ComponentQuery.query("#formMeusDados")[0];
+
+            formMeusDados.down("#idInteressado").setValue(_interessado.idInteressado);
+            formMeusDados.down("#nrCpfCnpj").setValue(_interessado.nrCpfCnpj);
+            formMeusDados.down("#nmInteressado").setValue(_interessado.nmInteressado);
+            formMeusDados.down("#dsEmail").setValue(_interessado.dsEmail);
+            formMeusDados.down("#dsEndereco").setValue(_interessado.dsEndereco);
+        }
+    },
+
+    getInteressado : function() {
+        var formMeusDados = Ext.ComponentQuery.query("#formMeusDados")[0];
+
+        var interessado = Ext.create("CuidaBelem.model.TblInteressados");
+        interessado.idInteressado = formMeusDados.down("#idInteressado").getValue();
+        interessado.nrCpfCnpj = formMeusDados.down("#nrCpfCnpj").getValue();
+        interessado.nmInteressado = formMeusDados.down("#nmInteressado").getValue();
+        interessado.dsEmail = formMeusDados.down("#dsEmail").getValue();
+        interessado.dsEndereco = formMeusDados.down("#dsEndereco").getValue();
+
+        return interessado;
+    },
+
+    limpar : function() {
+        var formMeusDados = Ext.ComponentQuery.query("#formMeusDados")[0];
+        formMeusDados.down("#nrCpfCnpj").setValue(null);
+        formMeusDados.down("#nmInteressado").setValue(null);
+        formMeusDados.down("#dsEmail").setValue(null);
+        formMeusDados.down("#dsEndereco").setValue(null);
     }
 
 });

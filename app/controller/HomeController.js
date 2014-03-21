@@ -7,7 +7,8 @@ Ext.define('CuidaBelem.controller.HomeController', {
             btMeusDados : "#btMeusDados",
             btComoUsar : "#btComoUsar",
             btSobre : "#btSobre",
-            listSolicitacoes: '#listSolicitacoes'
+            listSolicitacoes: '#listSolicitacoes',
+            meusDadosView: '#meusDadosView'
         },
         control: {
             btMeusDados : {
@@ -59,6 +60,20 @@ Ext.define('CuidaBelem.controller.HomeController', {
     },
 
     abrirMeusDados : function () {
+        var _this = this;
+
+        var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
+        interessadoLocalStore.load({
+            callback: function(records, operation, success) {
+                if(records.length != 0) {
+                    _this.getMeusDadosView().setInteressado(records[0].data);
+                } else {
+                    _this.getMeusDadosView().setInteressado(null);
+                }
+            },
+            scope: this
+        });
+
         Ext.Viewport.hideMenu('left');
         this.getMainView().avancar(1);
     },
