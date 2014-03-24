@@ -29,13 +29,15 @@ Ext.application({
     models: [
         'InteressadoLocal',
         'TblInteressados',
-        'Servico'
+        'Servico',
+        'TblProcessos'
     ],
             
     stores: [
         'InteressadoLocalStore',
         'InteressadoStore',
-        'ServicosStore'
+        'ServicosStore',
+        'SalvarSolicitacaoStore'
     ],
             
     isIconPrecomposed: true,

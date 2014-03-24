@@ -32,13 +32,29 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
             {
                 xtype: 'fieldset',
                 width: '95%',
+                id: 'idSolicitacaoFieldset',
                 items: [
                     {
                         xtype: 'textareafield',
                         height: '120px',
                         label: 'Endereço',
                         labelAlign: 'top',
-                        placeHolder: 'Informe o endereço ou clique no botão para localizar no mapa'
+                        placeHolder: 'Informe o endereço ou clique no botão para localizar no mapa',
+                        itemId: 'endereco'
+                    },
+                    {
+                        xtype: 'hiddenfield',
+                        itemId: 'cdTipoProcesso'
+                    },
+                    {
+                        xtype: 'hiddenfield',
+                        itemId: 'latitude',
+                        value: 1
+                    },
+                    {
+                        xtype: 'hiddenfield',
+                        itemId: 'longitude',
+                        value: 2
                     }
                 ]
             },
@@ -83,6 +99,7 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
             {
                 xtype: 'fieldset',
                 width: '95%',
+                id: 'formSolicitacaoInstrucao',
                 layout: {
                     type: 'vbox'
                 },
@@ -91,20 +108,27 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         xtype: 'textareafield',
                         height: '120px',
                         label: 'Descrição',
-                        labelAlign: 'top'
+                        labelAlign: 'top',
+                        itemId: 'instrucao'
                     }
                 ]
             },
             {
                 xtype: 'button',
                 ui: 'confirm',
+                id: 'btSalvarSolicitacao',
                 width: '95%',
-                text: 'Enviar',
-                handler: function() {
-                    Ext.Msg.alert('Atenção', 'Em desenvolvimento.', Ext.emptyFn);
-                }
+                text: 'Enviar'
             }
         ]
+    },
+
+    setCdTipoProcesso: function(cdTipoProcesso){
+        var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
+        formSolicitacao.down("#cdTipoProcesso").setValue(cdTipoProcesso);
     }
+
+
+
 
 });

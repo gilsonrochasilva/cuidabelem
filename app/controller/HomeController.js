@@ -8,7 +8,8 @@ Ext.define('CuidaBelem.controller.HomeController', {
             btComoUsar : "#btComoUsar",
             btSobre : "#btSobre",
             listSolicitacoes: '#listSolicitacoes',
-            meusDadosView: '#meusDadosView'
+            meusDadosView: '#meusDadosView',
+            solicitacaoView: '#solicitacaoView'
         },
         control: {
             btMeusDados : {
@@ -92,6 +93,7 @@ Ext.define('CuidaBelem.controller.HomeController', {
 
     novaSolicitacao: function(view, record) {
         Ext.Viewport.hideMenu('left');
+        this.getSolicitacaoView().setCdTipoProcesso(record.get('cdTipoProcesso'));
         this.getMainView().avancar(2);
     }
 });

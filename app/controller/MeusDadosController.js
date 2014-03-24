@@ -30,7 +30,7 @@ Ext.define('CuidaBelem.controller.MeusDadosController', {
         var interessado = this.getMeusDadosView().getInteressado();
         var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
         interessadoLocalStore.removeAll(true);
-        interessadoLocalStore.add({nrCpfCnpj : interessado.nrCpfCnpj, nmInteressado : interessado.nmInteressado, dsEmail : interessado.dsEmail, dsEndereco : interessado.dsEndereco});
+        interessadoLocalStore.add({idInteressado : interessado.idInteressado, nrCpfCnpj : interessado.nrCpfCnpj, nmInteressado : interessado.nmInteressado, dsEmail : interessado.dsEmail, dsEndereco : interessado.dsEndereco});
         interessadoLocalStore.sync();
 
         Ext.Msg.alert('Mensagem', 'Salvo com sucesso.', Ext.emptyFn);
