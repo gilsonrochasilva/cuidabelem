@@ -6,16 +6,24 @@ Ext.define('CuidaBelem.model.Servico', {
     config:{
         fields: [
             {
-                name: 'nome',
+                name: 'idServico',
+                type: Ext.data.Types.INTEGER
+            },
+            {
+                name: 'nmServico',
                 type: Ext.data.Types.STRING
             },
             {
-                name: 'descricao',
+                name: 'dsServico',
                 type: Ext.data.Types.STRING
             },
             {
                 name: 'cdTipoProcesso',
                 type: Ext.data.Types.INTEGER
+            },
+            {
+                name: 'dsImagem',
+                type: Ext.data.Types.STRING
             }
         ],
 

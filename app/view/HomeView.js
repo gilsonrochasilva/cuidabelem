@@ -62,10 +62,12 @@ Ext.define('CuidaBelem.view.HomeView', {
                         store: 'ServicosStore',
                         width: '100%',
                         itemTpl: [
-                            '<div>',
-                            '    {nome} <br/>',
-                            '    <span style="font-size: 12px;">{descricao}</span>',
-                            '</div>'
+                            '<table>',
+                                '<tr>',
+                                    '<td><img src="{dsImagem}"></td>',
+                                    '<td style="padding-left: 10px">{nmServico} <br/> <span style="font-size: 12px;">{dsServico}</span></td>',
+                                '</tr>',
+                            '</table>'
                         ],
                         ui: 'round',
                         emptyText: 'Nenhum Serviço Disponível'
