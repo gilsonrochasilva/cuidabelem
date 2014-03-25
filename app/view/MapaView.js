@@ -18,8 +18,7 @@ Ext.define('CuidaBelem.view.MapaView', {
     xtype: 'mapaView',
     id: 'mapaView',
 
-    requires: [
-    ],
+    marcador : null,
 
     config: {
 
@@ -87,7 +86,21 @@ Ext.define('CuidaBelem.view.MapaView', {
         ]
     },
 
-    localizacaoAtual : function() {
+    alterarCoordenadas : function(latitude, longitude) {
+        var mapObj = this.down('map');
+        var gMap = mapObj.getMap();
+        var latLng = new google.maps.LatLng(latitude, longitude);
 
+        if(marcador != null) {
+            marcador.setMap(null);
+        }
+
+        marcador = new google.maps.Marker({
+            position: latLng,
+            animation: google.maps.Animation.DROP,
+            map: gMap
+        });
+
+        mapObj.setMapCenter(latLngCoordinates);
     }
 });

@@ -7,7 +7,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             btVoltarSolicitacao : "#btVoltarSolicitacao",
             btSalvarSolicitacao: "#btSalvarSolicitacao",
             solicitacaoView: "#solicitacaoView",
-            btMapaSolicitacao : '#btMapaSolicitacao'
+            btMapaSolicitacao : '#btMapaSolicitacao',
+            mapaView : '#mapaView'
 
         },
         control: {
@@ -62,28 +63,22 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     abrirMapa : function() {
-        //this.getMainView().avancar(3);
-
-        // onSuccess Callback
-        // This method accepts a Position object, which contains the
-        // current GPS coordinates
-        //
+        var _this = this;
         var onSuccess = function(position) {
-            alert('Latitude: '        + position.coords.latitude          + '\n' +
-                'Longitude: '         + position.coords.longitude         + '\n' +
-                'Altitude: '          + position.coords.altitude          + '\n' +
-                'Accuracy: '          + position.coords.accuracy          + '\n' +
-                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-                'Heading: '           + position.coords.heading           + '\n' +
-                'Speed: '             + position.coords.speed             + '\n' +
-                'Timestamp: '         + position.timestamp                + '\n');
-        };
+            // Latitude: position.coords.latitude
+            // Longitude: position.coords.longitude
+            // Altitude: position.coords.altitude
+            // Accuracy: position.coords.accuracy
+            // Altitude Accuracy: position.coords.altitudeAccuracy
+            // Heading: position.coords.heading
+            // Speed: position.coords.speed
+            // Timestamp: position.timestamp
 
-        // onError Callback receives a PositionError object
-        //
+            _this.getMapaView().alterarCoordenadas(position.coords.latitude, position.coords.longitude);
+            _this.getMainView().avancar(3);
+        };
         function onError(error) {
-            alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
+            Ext.Msg.alert('Alerta', 'Não foi possível recuperar sua localização. ' + error.message, Ext.emptyFn);
         }
 
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
