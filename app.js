@@ -23,7 +23,8 @@ Ext.application({
         'MeusDadosController',
         'ComoUsarController',
         'SobreController',
-        'SolicitacaoController'
+        'SolicitacaoController',
+        'MapaController'
     ],
             
     models: [

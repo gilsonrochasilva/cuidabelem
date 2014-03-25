@@ -9,7 +9,8 @@ Ext.define('CuidaBelem.view.MainView', {
         'CuidaBelem.view.MeusDadosView',
         'CuidaBelem.view.ComoUsarView',
         'CuidaBelem.view.SobreView',
-        'CuidaBelem.view.SolicitacaoView'
+        'CuidaBelem.view.SolicitacaoView',
+        'CuidaBelem.view.MapaView'
     ],
 
     config: {
@@ -25,7 +26,8 @@ Ext.define('CuidaBelem.view.MainView', {
             { xtype : 'meusDadosView' },
             { xtype : 'solicitacaoView' },
             { xtype : 'comoUsarView' },
-            { xtype : 'sobreView' }
+            { xtype : 'sobreView' },
+            { xtype : 'mapaView' }
         ]
     },
     

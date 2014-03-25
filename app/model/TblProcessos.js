@@ -13,8 +13,8 @@ Ext.define('CuidaBelem.model.TblProcessos', {
 
         proxy : {
             type                : 'ajax',
-            //url                 : 'http://10.1.3.49:8080/gttrans/ws/multa/consulta',
-            url                 : 'http://localhost:8080/gdocprocessos/ws/processos/abrirprocesso',
+            url                 : 'http://10.1.3.49:8080/gdocprocessos/ws/processos/abrirprocesso',
+            //url                 : 'http://localhost:8080/gdocprocessos/ws/processos/abrirprocesso',
             //url                 : 'http://www.belem.pa.gov.br/gttrans/ws/multa/consulta',
 
             actionMethods: 'POST',

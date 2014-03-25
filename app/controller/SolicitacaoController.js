@@ -6,15 +6,21 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             mainView : "#mainView",
             btVoltarSolicitacao : "#btVoltarSolicitacao",
             btSalvarSolicitacao: "#btSalvarSolicitacao",
-            solicitacaoView: "#solicitacaoView"
+            solicitacaoView: "#solicitacaoView",
+            btMapaSolicitacao : '#btMapaSolicitacao'
 
         },
         control: {
             btVoltarSolicitacao : {
                 tap : 'voltarParaHome'
             },
+
             btSalvarSolicitacao: {
                 tap: 'salvarSolicitacao'
+            },
+
+            btMapaSolicitacao : {
+                tap : 'abrirMapa'
             }
         }
     },
@@ -53,6 +59,10 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 Ext.Msg.alert('Sucesso', 'Solicitação salva com sucesso!', Ext.emptyFn);
             }
         }, this);
+    },
+
+    abrirMapa : function() {
+        this.getMainView().avancar(3);
     }
 
 });
