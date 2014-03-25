@@ -101,6 +101,6 @@ Ext.define('CuidaBelem.view.MapaView', {
             map: gMap
         });
 
-        mapObj.setMapCenter(latLngCoordinates);
+        gMap.setMapCenter(latLngCoordinates);
     }
 });
