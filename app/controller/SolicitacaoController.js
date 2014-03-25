@@ -62,7 +62,24 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     abrirMapa : function() {
-        this.getMainView().avancar(3);
+        //this.getMainView().avancar(3);
+
+        var geo = Ext.create('Ext.util.Geolocation', {
+            autoUpdate: false,
+            listeners: {
+                locationupdate: function(geo) {
+                    Ext.Msg.alert('Sucesso', geo.getLatitude() + ' ' +geo.getLongitude(), Ext.emptyFn());
+                },
+                locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
+                    if(bTimeout){
+                        alert('Timeout occurred.');
+                        Ext.Msg.alert('Erro', 'Não foi possível recuperar a sua localização. Por favor, tente novamente.', Ext.emptyFn());
+                    } else {
+                        Ext.Msg.alert('Erro', 'Para usar esta função o GPS precisa estar ligado.', Ext.emptyFn());
+                    }
+                }
+            }
+        });
     }
 
 });
