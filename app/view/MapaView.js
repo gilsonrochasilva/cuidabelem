@@ -87,6 +87,7 @@ Ext.define('CuidaBelem.view.MapaView', {
     },
 
     alterarCoordenadas : function(latitude, longitude) {
+        alert(latitude + ' ' + longitude);
         var mapObj = this.down('map');
         var gMap = mapObj.getMap();
         var latLng = new google.maps.LatLng(latitude, longitude);
