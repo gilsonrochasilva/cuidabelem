@@ -62,7 +62,18 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     abrirMapa : function() {
-        this.getMainView().avancar(3);
+        //this.getMainView().avancar(3);
+
+        Ext.device.Geolocation.getCurrentPosition({
+            success: function(position) {
+                Ext.Msg.alert('Sucesso', position.coords.latitude + ' ' + position.coords.longitude, Ext.emptyFn());
+            },
+            failure: function() {
+                Ext.Msg.alert('Erro', 'Para usar esta função o GPS precisa estar ligado.', Ext.emptyFn());
+            },
+            scope: this,
+            allowHighAccuracy: true
+        });
     }
 
 });
