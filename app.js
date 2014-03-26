@@ -23,21 +23,25 @@ Ext.application({
         'MeusDadosController',
         'ComoUsarController',
         'SobreController',
-        'SolicitacaoController'
+        'SolicitacaoController',
+        'AcompanhaProcessoController'
     ],
             
     models: [
         'InteressadoLocal',
         'TblInteressados',
         'Servico',
-        'TblProcessos'
+        'TblProcessos',
+        'ProcessoServicoLista'
     ],
             
     stores: [
         'InteressadoLocalStore',
         'InteressadoStore',
         'ServicosStore',
-        'SalvarSolicitacaoStore'
+        'SalvarSolicitacaoStore',
+        'MinhasSolicitacoesStore',
+        'AcompanhaProcessoStore'
     ],
             
     isIconPrecomposed: true,

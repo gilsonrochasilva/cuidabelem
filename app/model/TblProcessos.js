@@ -8,6 +8,54 @@ Ext.define('CuidaBelem.model.TblProcessos', {
             {
                 name: 'idInteressado',
                 type: Ext.data.Types.INTEGER
+            },
+            {
+                name : 'nmServico',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'nrProcesso',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'nmTipoProcesso',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'nmInteressado',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'stProcesso',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'dsProcesso',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'tempoProcessoDias',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'dtAberturaProcesso',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'enderecoProcesso',
+                type: Ext.data.Types.STRING
+            },
+            {
+                name: 'idProcesso',
+                type: Ext.data.Types.INTEGER
+            },
+            {
+                name: 'latitude',
+                type: Ext.data.Types.INTEGER
+            },
+            {
+                name: 'longitude',
+                type: Ext.data.Types.INTEGER
             }
         ],
 
