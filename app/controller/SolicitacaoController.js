@@ -6,15 +6,22 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             mainView : "#mainView",
             btVoltarSolicitacao : "#btVoltarSolicitacao",
             btSalvarSolicitacao: "#btSalvarSolicitacao",
-            solicitacaoView: "#solicitacaoView"
+            solicitacaoView: "#solicitacaoView",
+            btMapaSolicitacao : '#btMapaSolicitacao',
+            mapaView : '#mapaView'
 
         },
         control: {
             btVoltarSolicitacao : {
                 tap : 'voltarParaHome'
             },
+
             btSalvarSolicitacao: {
                 tap: 'salvarSolicitacao'
+            },
+
+            btMapaSolicitacao : {
+                tap : 'abrirMapa'
             }
         }
     },
@@ -53,6 +60,32 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 Ext.Msg.alert('Sucesso', 'Solicitação salva com sucesso!', Ext.emptyFn);
             }
         }, this);
+    },
+
+    abrirMapa : function() {
+        var _this = this;
+        /*var onSuccess = function(position) {
+            // Latitude: position.coords.latitude
+            // Longitude: position.coords.longitude
+            // Altitude: position.coords.altitude
+            // Accuracy: position.coords.accuracy
+            // Altitude Accuracy: position.coords.altitudeAccuracy
+            // Heading: position.coords.heading
+            // Speed: position.coords.speed
+            // Timestamp: position.timestamp
+
+            _this.getMapaView().alterarCoordenadas(position.coords.latitude, position.coords.longitude);
+            _this.getMainView().avancar(3);
+        };
+        var onError = function onError(error) {
+            Ext.Msg.alert('Alerta', 'Não foi possível recuperar sua localização. ' + error.message, Ext.emptyFn);
+        }
+        // lat: -1.4528032
+        // lng: -48.4863029
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);*/
+
+        _this.getMapaView().alterarCoordenadas(-1.4528032, -48.4863029);
+        _this.getMainView().avancar(3);
     }
 
 });

@@ -39,7 +39,7 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         height: '120px',
                         label: 'Endereço',
                         labelAlign: 'top',
-                        placeHolder: 'Informe o endereço ou clique no botão para localizar no mapa',
+                        placeHolder: 'Informe o endereço ou clique no botão Localizar para buscar no mapa',
                         itemId: 'endereco'
                     },
                     {
@@ -80,10 +80,11 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                 },
                 items: [
                     {
+                        id : 'btMapaSolicitacao',
                         xtype: 'button',
                         margin: '',
                         width: '49%',
-                        text: 'Mapa'
+                        text: 'Localizar'
                     },
                     {
                         xtype: 'spacer'

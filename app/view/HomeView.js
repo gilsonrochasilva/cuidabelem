@@ -23,7 +23,6 @@ Ext.define('CuidaBelem.view.HomeView', {
     ],
 
     config: {
-        id: 'homeView',
 
         layout: {
             pack: 'start',
