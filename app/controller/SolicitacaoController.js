@@ -64,7 +64,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     abrirMapa : function() {
         var _this = this;
-        var onSuccess = function(position) {
+        /*var onSuccess = function(position) {
             // Latitude: position.coords.latitude
             // Longitude: position.coords.longitude
             // Altitude: position.coords.altitude
@@ -77,11 +77,15 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             _this.getMapaView().alterarCoordenadas(position.coords.latitude, position.coords.longitude);
             _this.getMainView().avancar(3);
         };
-        function onError(error) {
+        var onError = function onError(error) {
             Ext.Msg.alert('Alerta', 'Não foi possível recuperar sua localização. ' + error.message, Ext.emptyFn);
         }
+        // lat: -1.4528032
+        // lng: -48.4863029
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);*/
 
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        _this.getMapaView().alterarCoordenadas(-1.4528032, -48.4863029);
+        _this.getMainView().avancar(3);
     }
 
 });

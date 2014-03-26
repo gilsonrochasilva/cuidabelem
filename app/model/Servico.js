@@ -29,8 +29,8 @@ Ext.define('CuidaBelem.model.Servico', {
 
         proxy : {
             type                : 'ajax',
-            url                 : 'http://10.1.3.49:8080/gdocprocessos/ws/servicos/listar',
-            //url                 : 'http://localhost:8080/gdocprocessos/ws/servicos/listar',
+            //url                 : 'http://10.1.3.49:8080/gdocprocessos/ws/servicos/listar',
+            url                 : 'http://localhost:8080/gdocprocessos/ws/servicos/listar',
             //url                 : 'http://www.belem.pa.gov.br/gttrans/ws/multa/consulta',
 
             reader : {
