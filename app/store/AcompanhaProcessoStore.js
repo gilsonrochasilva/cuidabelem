@@ -14,7 +14,7 @@ Ext.define('CuidaBelem.store.AcompanhaProcessoStore', {
         mainUrl : 'http://localhost:8080/gdocprocessos/ws'
     },
 
-    buscar : function(idProcesso) {
+    buscarProcesso : function(idProcesso) {
         this.setProxy({
             type                : 'ajax',
             //url                 : 'http://10.1.3.49:8080/gttrans/ws/multa/consulta',

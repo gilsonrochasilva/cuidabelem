@@ -10,7 +10,9 @@ Ext.define('CuidaBelem.controller.HomeController', {
             listSolicitacoes: '#listSolicitacoes',
             meusDadosView: '#meusDadosView',
             solicitacaoView: '#solicitacaoView',
-            homeTabbar: '#homeTabbar'
+            homeTabbar: '#homeTabbar',
+            listaMinhasSolicitacoes : '#listaMinhasSolicitacoes',
+            acompanhaProcessoView : '#acompanhaProcessoView'
         },
         control: {
             btMeusDados : {
@@ -27,6 +29,9 @@ Ext.define('CuidaBelem.controller.HomeController', {
 
             listSolicitacoes : {
                 select : 'novaSolicitacao'
+            },
+            listaMinhasSolicitacoes : {
+                select : 'acompanharProcesso'
             }
         }
     },
@@ -110,6 +115,22 @@ Ext.define('CuidaBelem.controller.HomeController', {
 
         proxy.setExtraParam('idinteressado', records[0].data.idInteressado);
         minhasSolicitacoesStore.load();
+    },
+
+    acompanharProcesso: function(view, record){
+        Ext.Viewport.hideMenu('left');
+        this.getAcompanhaProcessoView().setIdProcesso(record.get('idProcesso'));
+        var acompanhaProcessoStore = Ext.getStore('AcompanhaProcessoStore');
+        acompanhaProcessoStore.addListener('load', this.handlerBuscaProcesso, this, {
+            single: true,
+            delay: 100
+        });
+        acompanhaProcessoStore.buscarProcesso(record.get('idProcesso'))
+        this.getMainView().avancar(6);
+    },
+
+    handlerBuscaProcesso: function(_this, records, successful, operation, eOpts ){
+        this.getAcompanhaProcessoView().setProcesso(records[0].data);
     }
 
 });
