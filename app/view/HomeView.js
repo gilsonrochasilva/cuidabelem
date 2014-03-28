@@ -78,81 +78,15 @@ Ext.define('CuidaBelem.view.HomeView', {
                     },
                     {
                         xtype: 'list',
+                        id: 'listaMinhasSolicitacoes',
                         title: 'Minhas Solicitações',
                         iconCls: 'info',
-                        data: [
-                            {
-                                name: 'Sinal de Trânsito',
-                                description: 'Reparo em sinal de trânsito com defeito',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Iluminação Pública',
-                                description: 'Reparo de lâmpada apagada, piscando ou acessa durante o dia',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Buraco nas vias',
-                                description: 'Reparo de buraco na pista/rua, na calçada ou na ciclovia',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Dengue',
-                                description: 'Vistoria em possíveis focos de Dengue',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Poda/Retirada de Árvore',
-                                description: 'Pode e retirada de árvores em logradouro público',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Desobstrução de bueiros',
-                                description: 'Limpeza de bueiros e galerias de águas pluviais',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Estacionamento Irregular',
-                                description: 'Fiscalização de Veículos estacionados em locais públicos',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Ocupação Irregular',
-                                description: 'Fiscalização do uso irregular de áreas públicas',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Remoção de entulho',
-                                description: 'Remoção gratuita de entulho e objetos inservíveis de residências',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Limpeza Urbana',
-                                description: 'Limpeza de resíduos deixados no logradouro',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            },
-                            {
-                                name: 'Outros',
-                                description: 'Para outras solicitações',
-                                data: '24/01/2014',
-                                protocolo: '00034523'
-                            }
-                        ],
+                        store: 'MinhasSolicitacoesStore',
                         itemTpl: [
                             '<div>',
-                            '    <span style="font-size: 12px;">{data}</span> <span style="font-size: 12px;">Protocolo Nº: {protocolo}</span>   <br />',
-                            '    {name} <br/>',
-                            '    <span style="font-size: 12px;">{description}</span>',
+                            '    <span style="font-size: 12px;">{dtAberturaProcesso}</span> <span style="font-size: 12px;">Processo Nº: {nrProcesso}/ {nrAno}</span>   <br />',
+                            '    {nmServico} <br/>',
+                            '    <span style="font-size: 12px;">{dsServico}</span>',
                             '</div>'
                         ]
                     },
@@ -194,6 +128,7 @@ Ext.define('CuidaBelem.view.HomeView', {
                 tabBar: {
                     docked: 'bottom',
                     scrollable: false,
+                    id:'homeTabbar',
                     layout: {
                         pack: 'justify',
                         type: 'hbox'

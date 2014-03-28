@@ -50,8 +50,8 @@ Ext.define('CuidaBelem.model.TblInteressados', {
                 name: 'vlSenha',
                 type: Ext.data.Types.STRING
             }
-        ],
-
+        ]
+/*
         proxy : {
             type                : 'ajax',
             //url                 : 'http://10.1.3.49:8080/gdocprocessos/ws/interessado/buscar',
@@ -63,5 +63,7 @@ Ext.define('CuidaBelem.model.TblInteressados', {
                 root	: ''
             }
         }
+        */
     }
+
 });

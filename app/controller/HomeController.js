@@ -9,7 +9,8 @@ Ext.define('CuidaBelem.controller.HomeController', {
             btSobre : "#btSobre",
             listSolicitacoes: '#listSolicitacoes',
             meusDadosView: '#meusDadosView',
-            solicitacaoView: '#solicitacaoView'
+            solicitacaoView: '#solicitacaoView',
+            homeTabbar: '#homeTabbar'
         },
         control: {
             btMeusDados : {
@@ -33,6 +34,13 @@ Ext.define('CuidaBelem.controller.HomeController', {
     launch: function() {
         var servicosStore = Ext.getStore('ServicosStore');
         servicosStore.load();
+        var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
+        interessadoLocalStore.addListener('load', this.handlerInteressado, this, {
+            single: true,
+            delay: 100
+        });
+        interessadoLocalStore.load();
+
         /*var me = this;
 
         document.addEventListener("backbutton",
@@ -95,5 +103,13 @@ Ext.define('CuidaBelem.controller.HomeController', {
         Ext.Viewport.hideMenu('left');
         this.getSolicitacaoView().setCdTipoProcesso(record.get('cdTipoProcesso'));
         this.getMainView().avancar(2);
+    },
+    handlerInteressado : function(_this, records, successful, operation, eOpts ){
+        var minhasSolicitacoesStore = Ext.getStore('MinhasSolicitacoesStore');
+        var proxy = minhasSolicitacoesStore.getProxy();
+
+        proxy.setExtraParam('idinteressado', records[0].data.idInteressado);
+        minhasSolicitacoesStore.load();
     }
+
 });
