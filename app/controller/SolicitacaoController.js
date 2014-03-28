@@ -86,6 +86,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
         _this.getMapaView().alterarCoordenadas(-1.4528032, -48.4863029);
         _this.getMainView().avancar(3);
+
     }
 
 });
