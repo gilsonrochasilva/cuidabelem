@@ -24,7 +24,8 @@ Ext.application({
         'ComoUsarController',
         'SobreController',
         'SolicitacaoController',
-        'MapaController'
+        'MapaController',
+        'AcompanhaProcessoController'
     ],
             
     models: [

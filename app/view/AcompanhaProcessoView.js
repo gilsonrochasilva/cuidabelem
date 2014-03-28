@@ -23,7 +23,7 @@ Ext.define('CuidaBelem.view.AcompanhaProcessoView', {
                 title: 'Meus Dados',
                 items: [
                     {
-                        id: 'btVoltarMeusDados',
+                        id: 'btVoltarAcompanhar',
                         xtype: 'button',
                         ui: 'back',
                         text: 'Voltar'
@@ -34,61 +34,55 @@ Ext.define('CuidaBelem.view.AcompanhaProcessoView', {
                 xtype: 'fieldset',
                 width: '95%',
                 id: 'fdAcompanhaProcesso',
+                defaults : {
+                  labelAlign: 'top',
+                  readOnly : true
+                },
                 items: [
                     {
                         xtype: 'textfield',
                         label: 'Servico',
-                        labelAlign: 'top',
                         itemId: 'nmServico'
                     },
                     {
                         xtype: 'textfield',
                         label: 'Processo',
-                        labelAlign: 'top',
                         itemId: 'nrProcesso'
                     },
                     {
                         xtype: 'textfield',
                         label: 'Tipo do Processo',
-                        labelAlign: 'top',
                         itemId: 'nmTipoProcesso'
                     },
                     {
                         xtype: 'textfield',
                         label: 'Interessado',
-                        labelAlign: 'top',
                         itemId: 'nmInteressado'
                     },
                     {
                         xtype: 'textfield',
                         label: 'Situação',
-                        labelAlign: 'top',
                         itemId: 'stProcesso'
                     },
                     {
                         xtype: 'textareafield',
-                        height: '120px',
                         label: 'Instrução Inicial',
-                        labelAlign: 'top',
                         itemId: 'dsProcesso'
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Processo Aberto (Dias)',
-                        labelAlign: 'top',
+                        label: 'Processo Aberto a (Dias)',
                         itemId: 'tempoProcessoDias'
                     },
                     {
                         xtype: 'textfield',
                         label: 'Data Abertura do Processo',
-                        labelAlign: 'top',
                         itemId: 'dtAberturaProcesso'
                     },
                     {
                         xtype: 'textareafield',
-                        height: '120px',
                         label: 'Endereço',
-                        labelAlign: 'top',
+
                         itemId: 'enderecoProcesso'
                     },
                     {

@@ -119,7 +119,6 @@ Ext.define('CuidaBelem.controller.HomeController', {
 
     acompanharProcesso: function(view, record){
         Ext.Viewport.hideMenu('left');
-        this.getAcompanhaProcessoView().setIdProcesso(record.get('idProcesso'));
         var acompanhaProcessoStore = Ext.getStore('AcompanhaProcessoStore');
         acompanhaProcessoStore.addListener('load', this.handlerBuscaProcesso, this, {
             single: true,
