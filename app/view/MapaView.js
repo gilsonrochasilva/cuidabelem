@@ -63,6 +63,7 @@ Ext.define('CuidaBelem.view.MapaView', {
                         width: '5%'
                     },
                     {
+                        id : 'btBuscarMapa',
                         xtype : 'button',
                         text: 'Buscar'
                     }
@@ -105,9 +106,11 @@ Ext.define('CuidaBelem.view.MapaView', {
             map: gMap
         }));
 
-        var latLng2 = new google.maps.LatLng(latitude, longitude);
+        //cria uma tarefa com delay
+        var task = Ext.create('Ext.util.DelayedTask', function() {
+            gMap.setCenter(latLng);
+        });
 
-        //gMap.setCenter(latLng);
-        gMap.panTo(latLng2);
+        task.delay(1000);
     }
 });
