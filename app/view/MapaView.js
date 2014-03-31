@@ -43,40 +43,12 @@ Ext.define('CuidaBelem.view.MapaView', {
                 ]
             },
             {
-                xtype : 'container',
-                width : '97%',
-                margin : 5,
-
-                layout : {
-                    align: 'center',
-                    type: 'hbox'
-                },
-
-                items : [
-                    {
-                        xtype : 'searchfield',
-                        width : '75%',
-                        placeHolder: 'Ex: José Malcher, Belém'
-                    },
-                    {
-                        xtype: 'spacer',
-                        width: '5%'
-                    },
-                    {
-                        id : 'btBuscarMapa',
-                        xtype : 'button',
-                        text: 'Buscar'
-                    }
-                ]
-            },
-            {
-                html : '<div class="x-form-fieldset-instructions">Toque no mapa para marcar o local.</div>',
-                margin: '0 0 5px 0'
+                html :'<input id="tfBuscaMapa" class="controls">'
             },
             {
                 xtype: 'map',
                 width: '100%',
-                height : '78%',
+                height : '100%',
                 mapOptions : {
                     zoom : 18
                 }
@@ -85,32 +57,38 @@ Ext.define('CuidaBelem.view.MapaView', {
                 xtype : 'button',
                 text: 'Salvar',
                 ui : 'confirm',
-                width: '95%',
-                margin : 5
+                docked : 'bottom',
+                disabled : true
             }
         ]
     },
 
     alterarCoordenadas : function(latitude, longitude) {
+        var _this = this;
         var mapObj = this.down('map');
         var gMap = mapObj.getMap();
         var latLng = new google.maps.LatLng(latitude, longitude);
 
         if(this.getMarcador() != null) {
-            this.getMarcador().setMap(null);
+            this.getMarcador().setPosition(latLng);
+        } else {
+            this.setMarcador(new google.maps.Marker({
+                position: latLng,
+                animation: google.maps.Animation.DROP,
+                map: gMap
+            }));
         }
-
-        this.setMarcador(new google.maps.Marker({
-            position: latLng,
-            animation: google.maps.Animation.DROP,
-            map: gMap
-        }));
-
         //cria uma tarefa com delay
         var task = Ext.create('Ext.util.DelayedTask', function() {
             gMap.setCenter(latLng);
+            _this.desabilitarBotao(false);
         });
 
         task.delay(1000);
+    },
+
+    desabilitarBotao : function(flag) {
+        var button = this.down('button');
+        button.setDisabled(flag);
     }
 });
