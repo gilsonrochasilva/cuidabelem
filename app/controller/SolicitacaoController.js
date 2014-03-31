@@ -43,23 +43,16 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         var proxy = salvarSolicitacaoStore.getProxy();
         var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
         var formSolicitacaoInstrucao = Ext.ComponentQuery.query("#formSolicitacaoInstrucao")[0];
-        proxy.setExtraParam('idinteressado', records[0].data.idInteressado);
-        proxy.setExtraParam('idtipoprocesso', formSolicitacao.down("#cdTipoProcesso").getValue());
-        proxy.setExtraParam('instrucao', formSolicitacaoInstrucao.down("#instrucao").getValue());
-        proxy.setExtraParam('latitude', formSolicitacao.down("#latitude").getValue());
-        proxy.setExtraParam('longitude', formSolicitacao.down("#longitude").getValue());
-        proxy.setExtraParam('endereco', formSolicitacao.down("#endereco").getValue());
+
+        salvarSolicitacaoStore.solicitar(records[0].data.idInteressado,
+            formSolicitacao.down("#cdTipoProcesso").getValue(),
+            formSolicitacaoInstrucao.down("#instrucao").getValue(),
+            formSolicitacao.down("#latitude").getValue(),
+            formSolicitacao.down("#longitude").getValue(),
+            formSolicitacao.down("#endereco").getValue());
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 
-        salvarSolicitacaoStore.load(function(records, operation, success) {
-            Ext.Viewport.unmask();
-            if(!success) {
-                Ext.Msg.alert('Alerta', 'Erro ao tentar fazer a consulta. Por favor, verifique sua conexão com a internet.', Ext.emptyFn);
-            }else{
-                Ext.Msg.alert('Sucesso', 'Solicitação salva com sucesso!', Ext.emptyFn);
-            }
-        }, this);
     },
 
     abrirMapa : function() {

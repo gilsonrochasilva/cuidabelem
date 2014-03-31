@@ -26,7 +26,6 @@ Ext.define('CuidaBelem.controller.HomeController', {
             btSobre : {
                 tap : 'abrirSobre'
             },
-
             listSolicitacoes : {
                 select : 'novaSolicitacao'
             },

@@ -18,7 +18,7 @@ Ext.define('CuidaBelem.model.Servico', {
                 type: Ext.data.Types.STRING
             },
             {
-                name: 'cdTipoProcesso',
+                name: 'cdTipoprocesso',
                 type: Ext.data.Types.INTEGER
             },
             {

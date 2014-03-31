@@ -36,15 +36,17 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                 items: [
                     {
                         xtype: 'textareafield',
-                        height: '120px',
                         label: 'Endereço',
                         labelAlign: 'top',
                         placeHolder: 'Informe o endereço ou clique no botão Localizar para buscar no mapa',
                         itemId: 'endereco'
                     },
                     {
-                        xtype: 'hiddenfield',
-                        itemId: 'cdTipoProcesso'
+                        xtype: 'textareafield',
+                        label: 'cdTipoProcesso',
+                        itemId: 'cdTipoProcesso',
+                        labelAlign: 'top',
+                        readOnly: true
                     },
                     {
                         xtype: 'hiddenfield',

@@ -57,8 +57,8 @@ Ext.define('CuidaBelem.model.TblProcessos', {
                 name: 'longitude',
                 type: Ext.data.Types.INTEGER
             }
-        ],
-
+        ]
+/*
         proxy : {
             type                : 'ajax',
             //url                 : 'http://10.1.3.49:8080/gdocprocessos/ws/processos/abrirprocesso',
@@ -72,5 +72,6 @@ Ext.define('CuidaBelem.model.TblProcessos', {
                 root	: ''
             }
         }
+        */
     }
 });
