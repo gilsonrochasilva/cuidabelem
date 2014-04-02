@@ -105,7 +105,7 @@ Ext.define('CuidaBelem.controller.HomeController', {
 
     novaSolicitacao: function(view, record) {
         Ext.Viewport.hideMenu('left');
-        this.getSolicitacaoView().setCdTipoProcesso(record.get('cdTipoProcesso'));
+        this.getSolicitacaoView().setCdTipoProcesso(record.get('cdTipoprocesso'));
         this.getMainView().avancar(2);
     },
     handlerInteressado : function(_this, records, successful, operation, eOpts ){

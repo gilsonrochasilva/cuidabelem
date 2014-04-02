@@ -26,12 +26,12 @@ Ext.define('CuidaBelem.store.SalvarSolicitacaoStore',{
         });
 
         var proxy = this.getProxy();
-        proxy.setExtraParam('idinteressado', records[0].data.idInteressado);
-        proxy.setExtraParam('idtipoprocesso', formSolicitacao.down("#cdTipoProcesso").getValue());
-        proxy.setExtraParam('instrucao', formSolicitacaoInstrucao.down("#instrucao").getValue());
-        proxy.setExtraParam('latitude', formSolicitacao.down("#latitude").getValue());
-        proxy.setExtraParam('longitude', formSolicitacao.down("#longitude").getValue());
-        proxy.setExtraParam('endereco', formSolicitacao.down("#endereco").getValue());
+        proxy.setExtraParam('idinteressado', idinteressado);
+        proxy.setExtraParam('idtipoprocesso', idtipoprocesso);
+        proxy.setExtraParam('instrucao', instrucao);
+        proxy.setExtraParam('latitude', latitude);
+        proxy.setExtraParam('longitude', longitude);
+        proxy.setExtraParam('endereco', endereco);
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 

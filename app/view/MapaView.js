@@ -54,6 +54,7 @@ Ext.define('CuidaBelem.view.MapaView', {
                 }
             },
             {
+                id : 'btSalvarMapa',
                 xtype : 'button',
                 text: 'Salvar',
                 ui : 'confirm',

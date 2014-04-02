@@ -5,16 +5,17 @@ Ext.define('CuidaBelem.controller.MapaController', {
         refs: {
             mainView : "#mainView",
             btVoltarMapa : "#btVoltarMapa",
-            btBuscarMapa : "#btBuscarMapa",
-            mapaView : '#mapaView'
+            btSalvarMapa : "#btSalvarMapa",
+            mapaView : '#mapaView',
+            solicitacaoView: "#solicitacaoView"
         },
         control: {
             btVoltarMapa : {
                 tap : 'voltarParaSolicitacao'
             },
 
-            btBuscarMapa : {
-                tap : 'buscar'
+            btSalvarMapa : {
+                tap : 'salvar'
             }
         }
     },
@@ -27,7 +28,6 @@ Ext.define('CuidaBelem.controller.MapaController', {
         google.maps.event.addListener(gMap, 'click', function(event) {
             var marker = _this.getMapaView().getMarcador();
             marker.setPosition(event.latLng);
-            _this.getMainView().desabilitarBotao(false);
         });
 
         var markers = [];
@@ -90,7 +90,10 @@ Ext.define('CuidaBelem.controller.MapaController', {
         this.getMainView().voltar(3);
     },
 
-    buscar : function() {
-        this.getMapaView().alterarCoordenadas(-1.4528032, -48.4863029);
+    salvar : function() {
+        var marcador = this.getMapaView().getMarcador();
+        var latLng = marcador.getPosition();
+        this.getSolicitacaoView().alterarCoordenadas(latLng.lat(), latLng.lng());
+        this.getMainView().voltar(3);
     }
 });

@@ -24,10 +24,12 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
 
     config: {
         id: 'solicitacaoView',
+
         layout: {
             align: 'center',
             type: 'vbox'
         },
+
         items: [
             {
                 xtype: 'fieldset',
@@ -42,21 +44,16 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         itemId: 'endereco'
                     },
                     {
-                        xtype: 'textareafield',
-                        label: 'cdTipoProcesso',
-                        itemId: 'cdTipoProcesso',
-                        labelAlign: 'top',
-                        readOnly: true
+                        xtype: 'hiddenfield',
+                        itemId: 'cdTipoProcesso'
                     },
                     {
                         xtype: 'hiddenfield',
-                        itemId: 'latitude',
-                        value: 1
+                        itemId: 'latitude'
                     },
                     {
                         xtype: 'hiddenfield',
-                        itemId: 'longitude',
-                        value: 2
+                        itemId: 'longitude'
                     }
                 ]
             },
@@ -129,9 +126,11 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
     setCdTipoProcesso: function(cdTipoProcesso){
         var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
         formSolicitacao.down("#cdTipoProcesso").setValue(cdTipoProcesso);
+    },
+
+    alterarCoordenadas : function(latitude, longitude) {
+        var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
+        formSolicitacao.down("#latitude").setValue(latitude);
+        formSolicitacao.down("#longitude").setValue(longitude);
     }
-
-
-
-
 });
