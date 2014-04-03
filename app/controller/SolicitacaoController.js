@@ -89,17 +89,23 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     },
 
-    tirarFoto : function (){
+    tirarFoto : function () {
         var _this = this;
 
-        var onSuccess = function(imageData){
-            _this.getSolicitacaoView().setFoto(imageData);
+        Ext.Msg.alert('Alerta', 'Entrou', Ext.emptyFn);
+
+        var onSuccess = function(imageData) {
+            alert('Image: ' + imageData);
+            Ext.Msg.alert('Alerta', 'Image: ' + imageData , Ext.emptyFn);
         };
 
-        var onFail = function(message){
-            Ext.Msg.alert('Alerta', message, Ext.emptyFn);
+        var onFail = function(message) {
+            alert('Failed because: ' + message);
+            Ext.Msg.alert('Alerta', 'Failed because: ' + message , Ext.emptyFn);
         };
 
-        navigator.camera.getPicture(onSuccess, onFail);
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL
+        })
     }
 });
