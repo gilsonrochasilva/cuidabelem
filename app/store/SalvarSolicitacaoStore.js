@@ -11,7 +11,7 @@ Ext.define('CuidaBelem.store.SalvarSolicitacaoStore',{
         model: 'CuidaBelem.model.TblProcessos'
     },
 
-    solicitar : function(idinteressado, idtipoprocesso, instrucao, latitude, longitude, endereco) {
+    solicitar : function(idinteressado, idtipoprocesso, instrucao, latitude, longitude, endereco, foto) {
         this.setProxy({
             type                : 'ajax',
             url                 : window.rootUrl +'/ws/processos/abrirprocesso',
@@ -30,6 +30,7 @@ Ext.define('CuidaBelem.store.SalvarSolicitacaoStore',{
         proxy.setExtraParam('latitude', latitude);
         proxy.setExtraParam('longitude', longitude);
         proxy.setExtraParam('endereco', endereco);
+        proxy.setExtraParam('foto', foto);
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 
