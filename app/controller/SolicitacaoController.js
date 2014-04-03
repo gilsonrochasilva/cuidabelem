@@ -94,17 +94,17 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
         Ext.Msg.alert('Alerta', 'Entrou', Ext.emptyFn);
 
-        var onSuccess = function(imageData) {
+        var onSuccessCamera = function(imageData) {
             alert('Image: ' + imageData);
             Ext.Msg.alert('Alerta', 'Image: ' + imageData , Ext.emptyFn);
         };
 
-        var onFail = function(message) {
+        var onFailCamera = function(message) {
             alert('Failed because: ' + message);
             Ext.Msg.alert('Alerta', 'Failed because: ' + message , Ext.emptyFn);
         };
 
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+        navigator.camera.getPicture(onSuccessCamera, onFailCamera, { quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
         })
     }
