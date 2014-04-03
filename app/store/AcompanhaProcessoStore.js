@@ -10,17 +10,14 @@ Ext.define('CuidaBelem.store.AcompanhaProcessoStore', {
 
     config : {
         storeId : 'AcompanhaProcessoStore',
-        model : 'CuidaBelem.model.TblProcessos',
-        mainUrl : 'http://localhost:8080/gdocprocessos/ws'
+        model : 'CuidaBelem.model.TblProcessos'
+
     },
 
     buscarProcesso : function(idProcesso) {
         this.setProxy({
             type                : 'ajax',
-            //url                 : 'http://10.1.3.49:8080/gttrans/ws/multa/consulta',
-            //url                 : 'http://localhost:8080/gdocprocessos/ws/interessado/buscar',
-            url                 : this.getMainUrl() + '/processos/acompanhar',
-            //url                 : 'http://www.belem.pa.gov.br/gttrans/ws/multa/consulta',
+            url                 : window.rootUrl + '/ws/processos/acompanhar',
 
             reader : {
                 reader	: 'json',
@@ -28,7 +25,6 @@ Ext.define('CuidaBelem.store.AcompanhaProcessoStore', {
             }
         });
         var proxy = this.getProxy();
-        //proxy.url = this.getMainUrl() + '/interessado/buscar';
         proxy.setExtraParam('idprocesso', idProcesso);
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });

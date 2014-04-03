@@ -64,6 +64,7 @@ Ext.application({
             'Dezembro'
         ];
 
+
         Ext.Date.defaultFormat = 'd/m/Y';
 
         // Destroy the #appLoadingIndicator element

@@ -33,10 +33,8 @@ Ext.define('CuidaBelem.model.ProcessoServicoLista', {
 
         proxy : {
             type                : 'ajax',
-            //url                 : 'http://10.1.3.49:8080/gttrans/ws/multa/consulta',
-            url                 : 'http://localhost:8080/gdocprocessos/ws/processos/listar',
-            //url                 : 'http://www.belem.pa.gov.br/gttrans/ws/multa/consulta',
-
+            url                 :  window.rootUrl+'/ws/processos/listar',
+            
             reader : {
                 reader	: 'json',
                 root	: ''

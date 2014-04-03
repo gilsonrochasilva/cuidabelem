@@ -10,17 +10,13 @@ Ext.define('CuidaBelem.store.InteressadoStore', {
 
     config : {
         storeId : 'InteressadoStore',
-        model : 'CuidaBelem.model.TblInteressados',
-        mainUrl : 'http://localhost:8080/gdocprocessos/ws'
+        model : 'CuidaBelem.model.TblInteressados'
     },
 
     buscar : function(nrCpfCnpj) {
         this.setProxy({
             type                : 'ajax',
-            //url                 : 'http://10.1.3.49:8080/gttrans/ws/multa/consulta',
-            //url                 : 'http://localhost:8080/gdocprocessos/ws/interessado/buscar',
-            url                 : this.getMainUrl() + '/interessado/buscar',
-            //url                 : 'http://www.belem.pa.gov.br/gttrans/ws/multa/consulta',
+            url                 : window.rootUrl +'/ws/interessado/buscar',
 
             reader : {
                 reader	: 'json',
@@ -28,7 +24,6 @@ Ext.define('CuidaBelem.store.InteressadoStore', {
             }
         });
         var proxy = this.getProxy();
-        //proxy.url = this.getMainUrl() + '/interessado/buscar';
         proxy.setExtraParam('nrCpfCnpj', nrCpfCnpj);
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
