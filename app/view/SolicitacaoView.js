@@ -89,6 +89,7 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         xtype: 'spacer'
                     },
                     {
+                        id: 'btTirarFoto',
                         xtype: 'button',
                         margin: '',
                         width: '49%',
@@ -110,6 +111,10 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         label: 'Descrição',
                         labelAlign: 'top',
                         itemId: 'instrucao'
+                    },
+                    {
+                        xtype: 'hiddenfield',
+                        itemId: 'foto'
                     }
                 ]
             },
@@ -132,5 +137,11 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
         var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
         formSolicitacao.down("#latitude").setValue(latitude);
         formSolicitacao.down("#longitude").setValue(longitude);
+    },
+
+    setFoto : function(textoFoto){
+        var formSolicitacao = Ext.ComponentQuery.query("#formSolicitacaoInstrucao")[0];
+        formSolicitacao.down("#foto").setValue(textoFoto);
     }
+
 });

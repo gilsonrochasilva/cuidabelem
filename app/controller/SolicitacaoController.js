@@ -8,7 +8,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             btSalvarSolicitacao: "#btSalvarSolicitacao",
             solicitacaoView: "#solicitacaoView",
             btMapaSolicitacao : '#btMapaSolicitacao',
-            mapaView : '#mapaView'
+            mapaView : '#mapaView',
+            btTirarFoto: '#btTirarFoto'
 
         },
         control: {
@@ -22,7 +23,12 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
             btMapaSolicitacao : {
                 tap : 'abrirMapa'
+            },
+
+            btTirarFoto: {
+                tap: 'tirarFoto'
             }
+
         }
     },
 
@@ -49,7 +55,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             formSolicitacaoInstrucao.down("#instrucao").getValue(),
             formSolicitacao.down("#latitude").getValue(),
             formSolicitacao.down("#longitude").getValue(),
-            formSolicitacao.down("#endereco").getValue());
+            formSolicitacao.down("#endereco").getValue(),
+            formSolicitacao.down("#foto").getValue());
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 
@@ -80,6 +87,19 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         _this.getMapaView().alterarCoordenadas(-1.4528032, -48.4863029);
         _this.getMainView().avancar(3);
 
-    }
+    },
 
+    tirarFoto : function (){
+        var _this = this;
+
+        var onSuccess = function(imageData){
+            _this.getSolicitacaoView().setFoto(imageData);
+        };
+
+        var onFail = function(message){
+            Ext.Msg.alert('Alerta', message, Ext.emptyFn);
+        };
+
+        navigator.camera.getPicture(onSuccess, onFail);
+    }
 });
