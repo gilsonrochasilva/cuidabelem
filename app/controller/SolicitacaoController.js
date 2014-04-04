@@ -93,20 +93,20 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         var _this = this;
 
 
-        var onSuccess = function(imageData){
+        function onSuccess(imageData){
             _this.getSolicitacaoView().setFoto(imageData);
             Ext.Msg.alert('Alerta', 'passando', Ext.emptyFn);
         };
 
-        var onFail = function(message){
+        function onFail(message){
             Ext.Msg.alert('Alerta', message, Ext.emptyFn);
         };
 
         var options = {
             quality: 50,
-            sourceType : pictureSourceType.CAMERA,
-            destinationType : destinationType.DATA_URL,
-            encodingType: encodingType.JPEG,
+            sourceType : navigator.camera.PictureSourceType.CAMERA,
+            destinationType : navigator.camera.DestinationType.DATA_URL,
+            encodingType: navigator.camera.EncodingType.JPEG,
             saveToPhotoAlbum: true
         }
 
