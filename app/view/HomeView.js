@@ -115,13 +115,13 @@ Ext.define('CuidaBelem.view.HomeView', {
                                 xtype: 'button',
                                 margin: '0 0 15px 0',
                                 width: '50%',
-                                text: 'Comapartilhar',
+                                text: 'Compartilhar',
                                 handler : function(){
                                     Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
                                     window.plugins.socialsharing.available(function(isAvailable) {
                                         Ext.Viewport.unmask();
                                         if (isAvailable) {
-                                            window.plugins.socialsharing.share('Conheça o aplicativo Cuida Belém e ajude ajude a Cuidar de Belém você também.', 'Cuida Beleḿ', 'http://ww3.belem.pa.gov.br/www/wp-content/uploads/logo-prefeitura.png', 'http://www.belem.pa.gov.br/', function(){}, function(e) { alert("Não foi possível Compartilhar."); });
+                                            window.plugins.socialsharing.share('Conheça o aplicativo Cuida Belém e ajude a Cuidar de Belém você também.', 'Cuida Belém', 'http://ww3.belem.pa.gov.br/www/wp-content/uploads/logo-prefeitura.png', 'http://www.belem.pa.gov.br/cuidabelem', function(){}, function(e) { alert("Não foi possível Compartilhar."); });
                                         }
                                     });
                                 }
