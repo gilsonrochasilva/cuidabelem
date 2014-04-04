@@ -108,25 +108,21 @@ Ext.define('CuidaBelem.view.HomeView', {
                         items: [
                             {
                                 xtype: 'label',
-                                html: '<span style="font-size: 25px">Divulgue</span>',
+                                html: '<span style="font-size: 25px">Convide seus amigos para Cuidar de Belém como você!</span>',
                                 margin: '0 0 20px 0'
                             },
                             {
                                 xtype: 'button',
                                 margin: '0 0 15px 0',
                                 width: '50%',
-                                text: 'Facebook'
-                            },
-                            {
-                                xtype: 'button',
-                                margin: '0 0 15px 0',
-                                width: '50%',
-                                text: 'Twiiter'
-                            },
-                            {
-                                xtype: 'button',
-                                width: '50%',
-                                text: 'Google+'
+                                text: 'Comapartilhar!',
+                                handler : function(){
+                                    window.plugins.socialsharing.available(function(isAvailable) {
+                                        if (isAvailable) {
+                                            window.plugins.socialsharing.share(null, null, 'https://www.google.nl/images/srpr/logo11w.png', null, function(){alert("ok")}, function(e){alert("error: " + e)});
+                                        }
+                                    });
+                                }
                             }
                         ]
                     }
