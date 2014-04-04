@@ -106,6 +106,12 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             _this.getSolicitacaoView().setFoto(imageData);
         }, function(message){
             Ext.Msg.alert('Alerta', message, Ext.emptyFn);
+        },
+        {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            encodingType: Camera.EncodingType.JPEG,
+            saveToPhotoAlbum: false
         });
     }
 });
