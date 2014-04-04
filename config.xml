@@ -17,11 +17,17 @@
     <!--
         Enable individual API permissions here.
         The "device" permission is required for the 'deviceready' event.
+        <feature name="http://api.phonegap.com/1.0/camera"/>
     -->
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/network"/>
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/camera"/>
+
+
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
 
     
     <!--
