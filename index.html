@@ -52,8 +52,17 @@
             <script type="text/javascript" src="phonegap.js"></script>
         -->
         <script type="text/javascript">
-            //window.rootUrl = 'http://localhost:8080/gdocprocessos';
-            window.rootUrl = 'http://10.1.4.25:8080/gdocprocessos';
+            window.rootUrl = 'http://localhost:8080/gdocprocessos';
+            //window.rootUrl = 'http://10.1.4.25:8080/gdocprocessos';
+            window.rootUrl = 'http://10.1.4.38:8080/gdocprocessos';
+
+            function isAndroid() {
+                return navigator.userAgent.toLowerCase().indexOf("android") > -1;
+            }
+
+            function isIOS() {
+                return navigator.userAgent.match(/(iPad|iPhone|iPod)/i) != null;
+            }
         </script>
         <script type="text/javascript" src="touch/sencha-touch-all.js"></script>
         
