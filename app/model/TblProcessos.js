@@ -50,12 +50,12 @@ Ext.define('CuidaBelem.model.TblProcessos', {
                 type: Ext.data.Types.INTEGER
             },
             {
-                name: 'latitude',
-                type: Ext.data.Types.INTEGER
+                name: 'coordenadaLatitude',
+                type: Ext.data.Types.NUMBER
             },
             {
-                name: 'longitude',
-                type: Ext.data.Types.INTEGER
+                name: 'coordenadaLongitude',
+                type: Ext.data.Types.NUMBER
             }
         ]
 

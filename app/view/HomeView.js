@@ -72,9 +72,15 @@ Ext.define('CuidaBelem.view.HomeView', {
                         emptyText: 'Nenhum Serviço Disponível'
                     },
                     {
+                        id : 'ultimasSolicitacoesMap',
                         xtype: 'map',
                         title: 'Últimas Solicitações',
-                        iconCls: 'locate'
+                        iconCls: 'locate',
+                        mapOptions : {
+                            zoom : 12,
+                            //center : new google.maps.LatLng(-1.45515, -48.48271)
+                            center : new google.maps.LatLng(-1.30362, -48.54348)
+                        }
                     },
                     {
                         xtype: 'list',

@@ -25,7 +25,8 @@ Ext.application({
         'SobreController',
         'SolicitacaoController',
         'MapaController',
-        'AcompanhaProcessoController'
+        'AcompanhaProcessoController',
+        'UltimasSolicitacoesController'
     ],
             
     models: [
@@ -42,7 +43,8 @@ Ext.application({
         'ServicosStore',
         'SalvarSolicitacaoStore',
         'MinhasSolicitacoesStore',
-        'AcompanhaProcessoStore'
+        'AcompanhaProcessoStore',
+        'UltimasSolicitacoesStore'
     ],
             
     isIconPrecomposed: true,
@@ -63,7 +65,6 @@ Ext.application({
             'Novembro',
             'Dezembro'
         ];
-
 
         Ext.Date.defaultFormat = 'd/m/Y';
 
