@@ -92,14 +92,20 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     tirarFoto : function (){
         var _this = this;
 
-        var onSuccess = function(imageData){
+        //
+        //var onSuccess = function(imageData){
+        //    _this.getSolicitacaoView().setFoto(imageData);
+        //};
+
+        //var onFail = function(message){
+        //    Ext.Msg.alert('Alerta', message, Ext.emptyFn);
+        //};
+
+
+        navigator.camera.getPicture(function(imageData){
             _this.getSolicitacaoView().setFoto(imageData);
-        };
-
-        var onFail = function(message){
+        }, function(message){
             Ext.Msg.alert('Alerta', message, Ext.emptyFn);
-        };
-
-        navigator.camera.getPicture(onSuccess, onFail);
+        });
     }
 });
