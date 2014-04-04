@@ -104,9 +104,9 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
         var options = {
             quality: 50,
-            sourceType : Camera.PictureSourceType.CAMERA,
-            destinationType : Camera.DestinationType.DATA_URL,
-            encodingType: Camera.EncodingType.JPEG,
+            sourceType : pictureSourceType.CAMERA,
+            destinationType : destinationType.DATA_URL,
+            encodingType: encodingType.JPEG,
             saveToPhotoAlbum: true
         }
 
