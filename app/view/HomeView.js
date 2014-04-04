@@ -117,9 +117,11 @@ Ext.define('CuidaBelem.view.HomeView', {
                                 width: '50%',
                                 text: 'Comapartilhar',
                                 handler : function(){
+                                    Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
                                     window.plugins.socialsharing.available(function(isAvailable) {
+                                        Ext.Viewport.unmask();
                                         if (isAvailable) {
-                                            window.plugins.socialsharing.share(null, null, 'https://www.google.nl/images/srpr/logo11w.png', null, function(){alert("ok")}, function(e){alert("error: " + e)});
+                                            window.plugins.socialsharing.share(null, null, '', null, function(){}, function(e){alert("Não foi possível Compartilhar.")});
                                         }
                                     });
                                 }
