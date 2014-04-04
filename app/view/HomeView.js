@@ -107,15 +107,15 @@ Ext.define('CuidaBelem.view.HomeView', {
                         },
                         items: [
                             {
-                                xtype: 'label',
-                                html: '<span style="font-size: 25px">Convide seus amigos para Cuidar de Belém como você!</span>',
-                                margin: '0 0 20px 0'
+                                html: '<div style="font-size: 25px; text-align: center;">Convide seus amigos para Cuidar de Belém como você!</div>',
+                                margin: '0 0 20px 0',
+                                width: '90%'
                             },
                             {
                                 xtype: 'button',
                                 margin: '0 0 15px 0',
                                 width: '50%',
-                                text: 'Comapartilhar!',
+                                text: 'Comapartilhar',
                                 handler : function(){
                                     window.plugins.socialsharing.available(function(isAvailable) {
                                         if (isAvailable) {
