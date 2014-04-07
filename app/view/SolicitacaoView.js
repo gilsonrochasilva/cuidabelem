@@ -19,7 +19,8 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
     id: 'solicitacaoView',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.ActionSheet'
     ],
 
     config: {
@@ -89,11 +90,41 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         xtype: 'spacer'
                     },
                     {
-                        id: 'btTirarFoto',
                         xtype: 'button',
                         margin: '',
                         width: '49%',
-                        text: 'Anexar Foto'
+                        model : false,
+                        text: 'Anexar Foto',
+                        handler : function() {
+                            var items = [
+                                {
+                                    id : 'btTirarFoto',
+                                    text : 'Tirar Foto'
+                                },
+                                {
+                                    id : 'btFotoGaleria',
+                                    text : 'Escolher Existente'
+                                },
+                                {
+                                    text : 'Cancelar',
+                                    ui : 'decline',
+                                    scope : this,
+
+                                    handler : function() {
+                                        this.actions.hide();
+                                    }
+                                }
+                            ];
+
+                            if(!this.actions) {
+                                this.actions = Ext.create('Ext.ActionSheet', {
+                                    items : items
+                                });
+                            }
+
+                            Ext.Viewport.add(this.actions);
+                            this.actions.show();
+                        }
                     }
                 ]
             },

@@ -9,7 +9,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             solicitacaoView: "#solicitacaoView",
             btMapaSolicitacao : '#btMapaSolicitacao',
             mapaView : '#mapaView',
-            btTirarFoto: '#btTirarFoto'
+            btFotoGaleria : '#btFotoGaleria'
 
         },
         control: {
@@ -25,10 +25,9 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 tap : 'abrirMapa'
             },
 
-            btTirarFoto: {
-                tap: 'tirarFoto'
+            btFotoGaleria : {
+                tap : 'abrirGaleria'
             }
-
         }
     },
 
@@ -94,7 +93,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         var _this = this;
 
 
-        function onSuccess(imageData){
+        /*function onSuccess(imageData){
             _this.getSolicitacaoView().setFoto(imageData);
             Ext.Msg.alert('Alerta', 'passando', Ext.emptyFn);
         };
@@ -112,6 +111,26 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         }
 
         navigator.camera.getPicture(onSuccess, onFail, options);
-        Ext.Msg.alert('Alerta', 'passou do metodo', Ext.emptyFn);
+        Ext.Msg.alert('Alerta', 'passou do metodo', Ext.emptyFn);*/
+
+
+    },
+
+    abrirGaleria: function() {
+        var captureSuccess = function(mediaFiles) {
+            var i, path, len;
+            for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+                path = mediaFiles[i].fullPath;
+                console.log(path);
+            }
+        };
+
+        // capture error callback
+        var captureError = function(error) {
+            navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+        };
+
+        // start image capture
+        navigator.device.capture.captureImage(captureSuccess, captureError, { limit : 1 });
     }
 });
