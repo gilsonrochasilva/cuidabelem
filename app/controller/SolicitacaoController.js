@@ -117,7 +117,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     abrirGaleria: function() {
-        var captureSuccess = function(mediaFiles) {
+        /*var captureSuccess = function(mediaFiles) {
             var i, path, len;
             for (i = 0, len = mediaFiles.length; i < len; i += 1) {
                 path = mediaFiles[i].fullPath;
@@ -136,6 +136,29 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             navigator.device.capture.captureImage(captureSuccess, captureError, { limit : 1 });
         } catch(e) {
             alert(e.message)
+        }*/
+
+        var _this = this;
+
+        console.log('abrirGaleria');
+
+        function onSuccess(imageData) {
+            console.log(imageData);
+            _this.getSolicitacaoView().setFoto(imageData);
+        };
+
+        function onFail(message){
+            Ext.Msg.alert('Alerta', message, Ext.emptyFn);
+        };
+
+        var options = {
+            quality: 50,
+            sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY,
+            destinationType : navigator.camera.DestinationType.DATA_URL,
+            encodingType: navigator.camera.EncodingType.JPEG//,
+            //saveToPhotoAlbum: true
         }
+
+        navigator.camera.getPicture(onSuccess, onFail, options);
     }
 });
