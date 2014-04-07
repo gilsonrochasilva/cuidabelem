@@ -117,27 +117,27 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     abrirGaleria: function() {
-        alert('1');
+        console.log('1');
 
         var captureSuccess = function(mediaFiles) {
-            alert('sucesso 1');
+            console.log('sucesso 1');
             var i, path, len;
             for (i = 0, len = mediaFiles.length; i < len; i += 1) {
                 path = mediaFiles[i].fullPath;
                 //console.log(path);
             }
-            alert('sucesso 2');
+            console.log('sucesso 2');
         };
-        alert('2');
+        console.log('2');
         // capture error callback
         var captureError = function(error) {
-            alert('erro');
+            console.log('erro');
             navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
         };
-        alert('3');
+        console.log('3');
         // start image capture
         navigator.device.capture.captureImage(captureSuccess, captureError, { limit : 1 });
 
-        alert('4');
+        console.log('4');
     }
 });
