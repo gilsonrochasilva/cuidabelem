@@ -72,7 +72,7 @@
     -->
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.geolocalization" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
