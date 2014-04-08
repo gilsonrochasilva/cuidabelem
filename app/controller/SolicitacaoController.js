@@ -104,6 +104,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         var _this = this;
 
         var captureSuccess = function(mediaFiles) {
+            Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
+
             var i, mediaFile, len;
 
             for (i = 0, len = mediaFiles.length; i < len; i += 1) {
@@ -116,15 +118,18 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                     reader.onloadend = function (evt) {
                         //alert(evt.target.result);
                         _this.getSolicitacaoView().setFoto(evt.target.result);
+                        Ext.Viewport.unmask();
                     };
 
                     reader.readAsDataURL(file);
                 }, function (error) {
+                    Ext.Viewport.unmask();
                     alert("File Entry Error: " + error.code);
                 });
             }
 
             var onFail = function (error) {
+                Ext.Viewport.unmask();
                 alert("Resolve Error: " + error.code);
             }
 
