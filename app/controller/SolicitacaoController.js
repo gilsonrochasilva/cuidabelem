@@ -129,10 +129,14 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 alert("Resolve Error: " + error.code);
             }
 
-            alert("URI: " + mediaFile.fullPath);
+            var path = mediaFile.fullPath;
+            var indexOfPathSeparator = path.indexOf("/");
+            var newPath = path.substring(indexOfPathSeparator, path.length);
+            newPath = "file://" + newPath;
 
-            //window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, onFail);
-            window.resolveLocalFileSystemURI("file:///storage/sdcard0/DCIM/Camera/1396967750996.jpg", onResolveSuccess, onFail);
+            alert(path);
+
+            window.resolveLocalFileSystemURI(newPath, onResolveSuccess, onFail);
         };
 
          // capture error callback
