@@ -121,17 +121,18 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
                     reader.readAsDataURL(file);
                 }, function (error) {
-                    alert("File Entry Error: " + error.message);
+                    alert("File Entry Error: " + error.code);
                 });
             }
 
             var onFail = function (error) {
-                alert("Resolve Error: " + error.message);
+                alert("Resolve Error: " + error.code);
             }
 
             alert("URI: " + mediaFile.fullPath);
 
-            window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, onFail);
+            //window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, onFail);
+            window.resolveLocalFileSystemURI("file:///storage/sdcard0/DCIM/Camera/1396967750996.jpg", onResolveSuccess, onFail);
         };
 
          // capture error callback
