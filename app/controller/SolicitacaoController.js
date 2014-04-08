@@ -129,7 +129,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 alert("Resolve Error: " + error.code);
             }
 
-            window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, fail);
+            window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, onFail);
         };
 
          // capture error callback
