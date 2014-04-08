@@ -174,6 +174,10 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
         var formSolicitacao = Ext.ComponentQuery.query("#formSolicitacaoInstrucao")[0];
         formSolicitacao.down("#pathFoto").setValue(hexFoto);
         formSolicitacao.down("#instrucao").setValue(hexFoto);
+    },
+
+    hideActions : function() {
+        this.actions.hide();
     }
 
 });
