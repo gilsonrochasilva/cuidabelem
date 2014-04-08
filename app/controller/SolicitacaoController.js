@@ -121,13 +121,15 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
                     reader.readAsDataURL(file);
                 }, function (error) {
-                    alert("File Entry Error: " + error.code);
+                    alert("File Entry Error: " + error.message);
                 });
             }
 
             var onFail = function (error) {
-                alert("Resolve Error: " + error.code);
+                alert("Resolve Error: " + error.message);
             }
+
+            alert("URI: " + mediaFile.fullPath);
 
             window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, onFail);
         };
