@@ -113,11 +113,14 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
             var reader = new FileReader();
             reader.onloadend = function (evt) {
+                alert('3');
                 alert(evt.target.result);
                 //_this.getSolicitacaoView().setHexFoto(evt.target.result);
             };
 
+            alert('1');
             reader.readAsDataURL(mediaFile);
+            alert('2');
         };
 
          // capture error callback
