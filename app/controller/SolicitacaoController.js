@@ -102,7 +102,6 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     tirarFoto : function () {
         var _this = this;
-        //_this.getSolicitacaoView().hideActions();
 
         var captureSuccess = function(mediaFiles) {
             var i, mediaFile, len;
@@ -112,11 +111,11 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             }
 
             var onResolveSuccess = function(fileEntry) {
-                alert("File Entry: " + fileEntry.fullPath);
                 fileEntry.file(function(file) {
                     var reader = new FileReader();
                     reader.onloadend = function (evt) {
-                        alert(evt.target.result);
+                        //alert(evt.target.result);
+                        _this.getSolicitacaoView().setFoto(evt.target.result);
                     };
 
                     reader.readAsDataURL(file);
@@ -133,8 +132,6 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             var indexOfPathSeparator = path.indexOf("/");
             var newPath = path.substring(indexOfPathSeparator, path.length);
             newPath = "file://" + newPath;
-
-            alert(path);
 
             window.resolveLocalFileSystemURI(newPath, onResolveSuccess, onFail);
         };
