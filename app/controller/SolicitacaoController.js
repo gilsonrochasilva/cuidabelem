@@ -100,62 +100,6 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     tirarFoto : function () {
         var _this = this;
-
-        var captureSuccess = function(mediaFiles) {
-            Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
-
-            var i, mediaFile, len;
-
-            for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-                mediaFile = mediaFiles[i];
-            }
-
-            var onResolveSuccess = function(fileEntry) {
-                fileEntry.file(function(file) {
-                    var reader = new FileReader();
-                    reader.onloadend = function (evt) {
-                        //alert(evt.target.result);
-                        _this.getSolicitacaoView().setFoto(evt.target.result);
-                        Ext.Viewport.unmask();
-                    };
-
-                    reader.readAsDataURL(file);
-                }, function (error) {
-                    Ext.Viewport.unmask();
-                    alert("File Entry Error: " + error.code);
-                });
-            }
-
-            var onFail = function (error) {
-                Ext.Viewport.unmask();
-                alert("Resolve Error: " + error.code);
-            }
-
-            var path = mediaFile.fullPath;
-            var indexOfPathSeparator = path.indexOf("/");
-            var newPath = path.substring(indexOfPathSeparator, path.length);
-            newPath = "file://" + newPath;
-
-            window.resolveLocalFileSystemURI(newPath, onResolveSuccess, onFail);
-        };
-
-         // capture error callback
-        var captureError = function(error) {
-            navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-        };
-
-        try {
-            // start image capture
-            navigator.device.capture.captureImage(captureSuccess, captureError, { limit : 1 });
-        } catch(e) {
-            alert(e.message)
-        }
-
-
-    },
-
-    abrirGaleria: function() {
-        var _this = this;
         //_this.getSolicitacaoView().actions.hide();
 
         var onSuccess = function(imageData) {
@@ -167,7 +111,6 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 fileEntry.file(function(file) {
                     var reader = new FileReader();
                     reader.onloadend = function (evt) {
-                        //alert(evt.target.result);
                         _this.getSolicitacaoView().setFoto(evt.target.result);
                         Ext.Viewport.unmask();
                     };
@@ -192,8 +135,55 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         };
 
         var options = {
-            quality: 50,
+            quality: 40,
             sourceType : navigator.camera.PictureSourceType.CAMERA,
+            destinationType : navigator.camera.DestinationType.FILE_URI,
+            encodingType: navigator.camera.EncodingType.JPEG,
+            saveToPhotoAlbum: true
+        }
+
+        navigator.camera.getPicture(onSuccess, onFail, options);
+    },
+
+    abrirGaleria: function() {
+        var _this = this;
+        //_this.getSolicitacaoView().actions.hide();
+
+        var onSuccess = function(imageData) {
+            alert(imageData);
+
+            Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
+
+            var onResolveSuccess = function(fileEntry) {
+                fileEntry.file(function(file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function (evt) {
+                        _this.getSolicitacaoView().setFoto(evt.target.result);
+                        Ext.Viewport.unmask();
+                    };
+
+                    reader.readAsDataURL(file);
+                }, function (error) {
+                    Ext.Viewport.unmask();
+                    alert("File Entry Error: " + error.code);
+                });
+            }
+
+            var onFail = function (error) {
+                Ext.Viewport.unmask();
+                alert("Resolve Error: " + error.code);
+            }
+
+            window.resolveLocalFileSystemURI(imageData, onResolveSuccess, onFail);
+        };
+
+        var onFail = function(message) {
+            Ext.Msg.alert('Alerta', message, Ext.emptyFn);
+        };
+
+        var options = {
+            quality: 40,
+            sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY,
             destinationType : navigator.camera.DestinationType.FILE_URI,
             encodingType: navigator.camera.EncodingType.JPEG,
             saveToPhotoAlbum: true
