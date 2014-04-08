@@ -158,20 +158,48 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         var _this = this;
         //_this.getSolicitacaoView().actions.hide();
 
-        function onSuccess(imageData) {
-            alert(imageData);
+        var onSuccess = function(imageData) {
+            Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
+
+            var onResolveSuccess = function(fileEntry) {
+                fileEntry.file(function(file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function (evt) {
+                        //alert(evt.target.result);
+                        _this.getSolicitacaoView().setFoto(evt.target.result);
+                        Ext.Viewport.unmask();
+                    };
+
+                    reader.readAsDataURL(file);
+                }, function (error) {
+                    Ext.Viewport.unmask();
+                    alert("File Entry Error: " + error.code);
+                });
+            }
+
+            var onFail = function (error) {
+                Ext.Viewport.unmask();
+                alert("Resolve Error: " + error.code);
+            }
+
+            var path = imageData;
+            var indexOfPathSeparator = path.indexOf("/");
+            var newPath = path.substring(indexOfPathSeparator, path.length);
+            newPath = "file://" + newPath;
+
+            window.resolveLocalFileSystemURI(newPath, onResolveSuccess, onFail);
         };
 
-        function onFail(message){
+        var onFail = function(message) {
             Ext.Msg.alert('Alerta', message, Ext.emptyFn);
         };
 
         var options = {
             quality: 50,
-            sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY,
+            sourceType : navigator.camera.PictureSourceType.CAMERA,
             destinationType : navigator.camera.DestinationType.FILE_URI,
-            encodingType: navigator.camera.EncodingType.JPEG//,
-            //saveToPhotoAlbum: true
+            encodingType: navigator.camera.EncodingType.JPEG,
+            saveToPhotoAlbum: true
         }
 
         navigator.camera.getPicture(onSuccess, onFail, options);
