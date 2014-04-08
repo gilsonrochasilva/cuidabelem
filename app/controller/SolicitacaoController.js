@@ -53,8 +53,6 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     handlerInteressado : function(_this, records, successful, operation, eOpts ) {
-
-
         var salvarSolicitacaoStore = Ext.getStore('SalvarSolicitacaoStore');
         var proxy = salvarSolicitacaoStore.getProxy();
         var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
@@ -66,7 +64,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             formSolicitacao.down("#latitude").getValue(),
             formSolicitacao.down("#longitude").getValue(),
             formSolicitacao.down("#endereco").getValue(),
-            formSolicitacao.down("#foto").getValue());
+            formSolicitacaoInstrucao.down("#foto").getValue());
 
         Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 
