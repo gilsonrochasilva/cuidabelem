@@ -111,16 +111,24 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 mediaFile = mediaFiles[i];
             }
 
-            var reader = new FileReader();
-            reader.onloadend = function (evt) {
-                alert('3');
-                alert(evt.target.result);
-                //_this.getSolicitacaoView().setHexFoto(evt.target.result);
-            };
+            var onResolveSuccess = function(fileEntry) {
+                fileEntry.file(function(file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function (evt) {
+                        alert(evt.target.result);
+                    };
 
-            alert(mediaFile.fullPath);
-            reader.readAsDataURL(mediaFile);
-            alert('2');
+                    reader.readAsDataURL(file);
+                }, function (error) {
+                    alert("File Entry Error: " + error.code);
+                });
+            }
+
+            var onFail = function (error) {
+                alert("Resolve Error: " + error.code);
+            }
+
+            window.resolveLocalFileSystemURI(mediaFile.fullPath, onResolveSuccess, fail);
         };
 
          // capture error callback
