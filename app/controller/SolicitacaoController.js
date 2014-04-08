@@ -185,8 +185,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             quality: 40,
             sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY,
             destinationType : navigator.camera.DestinationType.FILE_URI,
-            encodingType: navigator.camera.EncodingType.JPEG,
-            saveToPhotoAlbum: true
+            encodingType: navigator.camera.EncodingType.JPEG
         }
 
         navigator.camera.getPicture(onSuccess, onFail, options);
