@@ -184,12 +184,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 alert("Resolve Error: " + error.code);
             }
 
-            var path = imageData;
-            var indexOfPathSeparator = path.indexOf("/");
-            var newPath = path.substring(indexOfPathSeparator, path.length);
-            newPath = "file://" + newPath;
-
-            window.resolveLocalFileSystemURI(newPath, onResolveSuccess, onFail);
+            window.resolveLocalFileSystemURI(imageData, onResolveSuccess, onFail);
         };
 
         var onFail = function(message) {
