@@ -150,11 +150,13 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         //_this.getSolicitacaoView().actions.hide();
 
         var onSuccess = function(imageData) {
-            alert(imageData);
 
             Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 
             var onResolveSuccess = function(fileEntry) {
+
+                alert(fileEntry.fullPath);
+
                 fileEntry.file(function(file) {
                     var reader = new FileReader();
                     reader.onloadend = function (evt) {
@@ -169,12 +171,12 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 });
             }
 
-            var onFail = function (error) {
+            var onResolveFail = function (error) {
                 Ext.Viewport.unmask();
                 alert("Resolve Error: " + error.code);
             }
 
-            window.resolveLocalFileSystemURI(imageData, onResolveSuccess, onFail);
+            window.resolveLocalFileSystemURI(imageData, onResolveSuccess, onResolveFail);
         };
 
         var onFail = function(message) {
