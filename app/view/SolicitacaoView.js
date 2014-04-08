@@ -145,7 +145,7 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                     },
                     {
                         xtype: 'hiddenfield',
-                        itemId: 'foto'
+                        itemId: 'pathFoto'
                     }
                 ]
             },
@@ -170,9 +170,10 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
         formSolicitacao.down("#longitude").setValue(longitude);
     },
 
-    setFoto : function(textoFoto){
+    setHexFoto : function(hexFoto){
         var formSolicitacao = Ext.ComponentQuery.query("#formSolicitacaoInstrucao")[0];
-        formSolicitacao.down("#foto").setValue(textoFoto);
+        formSolicitacao.down("#pathFoto").setValue(hexFoto);
+        formSolicitacao.down("#instrucao").setValue(hexFoto);
     }
 
 });

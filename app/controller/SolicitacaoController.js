@@ -2,6 +2,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     extend : 'Ext.app.Controller',
     
     config: {
+
         refs: {
             mainView : "#mainView",
             btVoltarSolicitacao : "#btVoltarSolicitacao",
@@ -13,6 +14,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             btTirarFoto : '#btTirarFoto'
 
         },
+
         control: {
             btVoltarSolicitacao : {
                 tap : 'voltarParaHome'
@@ -40,7 +42,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         this.getMainView().voltar(2);
     },
 
-    salvarSolicitacao: function(){
+    salvarSolicitacao: function() {
+
         var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
         interessadoLocalStore.addListener('load', this.handlerInteressado, this, {
             single: true,
@@ -48,7 +51,10 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         });
         interessadoLocalStore.load();
     },
-    handlerInteressado : function(_this, records, successful, operation, eOpts ){
+
+    handlerInteressado : function(_this, records, successful, operation, eOpts ) {
+
+
         var salvarSolicitacaoStore = Ext.getStore('SalvarSolicitacaoStore');
         var proxy = salvarSolicitacaoStore.getProxy();
         var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
@@ -95,12 +101,22 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     tirarFoto : function () {
+        var _this = this;
+        _this.getSolicitacaoView().actions.hide();
+
         var captureSuccess = function(mediaFiles) {
-            var i, path, len;
+            var i, mediaFile, len;
 
             for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-                path = mediaFiles[i].fullPath;
+                mediaFile = mediaFiles[i];
             }
+
+            var reader = new FileReader();
+            reader.onloadend = function (evt) {
+                _this.getSolicitacaoView().setHexFoto(evt.target.result);
+            };
+
+            reader.readAsDataURL(mediaFile);
         };
 
          // capture error callback
@@ -120,12 +136,10 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     abrirGaleria: function() {
         var _this = this;
-
-        console.log('abrirGaleria');
+        _this.getSolicitacaoView().actions.hide();
 
         function onSuccess(imageData) {
             alert(imageData);
-            //_this.getSolicitacaoView().setFoto(imageData);
         };
 
         function onFail(message){
