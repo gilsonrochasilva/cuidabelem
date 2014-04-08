@@ -118,7 +118,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 //_this.getSolicitacaoView().setHexFoto(evt.target.result);
             };
 
-            alert('1');
+            alert(mediaFile.fullPath);
             reader.readAsDataURL(mediaFile);
             alert('2');
         };
