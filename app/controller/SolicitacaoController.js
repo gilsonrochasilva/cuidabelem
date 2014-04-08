@@ -102,7 +102,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     tirarFoto : function () {
         var _this = this;
-        _this.getSolicitacaoView().hideActions();
+        //_this.getSolicitacaoView().hideActions();
 
         var captureSuccess = function(mediaFiles) {
             var i, mediaFile, len;
@@ -136,7 +136,7 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     abrirGaleria: function() {
         var _this = this;
-        _this.getSolicitacaoView().actions.hide();
+        //_this.getSolicitacaoView().actions.hide();
 
         function onSuccess(imageData) {
             alert(imageData);
