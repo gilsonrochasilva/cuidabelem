@@ -9,7 +9,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             solicitacaoView: "#solicitacaoView",
             btMapaSolicitacao : '#btMapaSolicitacao',
             mapaView : '#mapaView',
-            btFotoGaleria : '#btFotoGaleria'
+            btFotoGaleria : '#btFotoGaleria',
+            btTirarFoto : '#btTirarFoto'
 
         },
         control: {
@@ -27,6 +28,10 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
             btFotoGaleria : {
                 tap : 'abrirGaleria'
+            },
+
+            btTirarFoto : {
+                tap : 'tirarFoto'
             }
         }
     },
@@ -89,45 +94,17 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
 
     },
 
-    tirarFoto : function (){
-        var _this = this;
-
-
-        /*function onSuccess(imageData){
-            _this.getSolicitacaoView().setFoto(imageData);
-            Ext.Msg.alert('Alerta', 'passando', Ext.emptyFn);
-        };
-
-        function onFail(message){
-            Ext.Msg.alert('Alerta', message, Ext.emptyFn);
-        };
-
-        var options = {
-            quality: 50,
-            sourceType : navigator.camera.PictureSourceType.CAMERA,
-            destinationType : navigator.camera.DestinationType.DATA_URL,
-            encodingType: navigator.camera.EncodingType.JPEG,
-            saveToPhotoAlbum: true
-        }
-
-        navigator.camera.getPicture(onSuccess, onFail, options);
-        Ext.Msg.alert('Alerta', 'passou do metodo', Ext.emptyFn);*/
-
-
-    },
-
-    abrirGaleria: function() {
-        /*var captureSuccess = function(mediaFiles) {
+    tirarFoto : function () {
+        var captureSuccess = function(mediaFiles) {
             var i, path, len;
+
             for (i = 0, len = mediaFiles.length; i < len; i += 1) {
                 path = mediaFiles[i].fullPath;
-                //console.log(path);
             }
         };
 
-        // capture error callback
+         // capture error callback
         var captureError = function(error) {
-            console.log('erro');
             navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
         };
 
@@ -136,8 +113,12 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             navigator.device.capture.captureImage(captureSuccess, captureError, { limit : 1 });
         } catch(e) {
             alert(e.message)
-        }*/
+        }
 
+
+    },
+
+    abrirGaleria: function() {
         var _this = this;
 
         console.log('abrirGaleria');
