@@ -159,6 +159,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         //_this.getSolicitacaoView().actions.hide();
 
         var onSuccess = function(imageData) {
+            alert(imageData);
+
             Ext.Viewport.mask({ xtype: 'loadmask', message: "Carregando..." });
 
             var onResolveSuccess = function(fileEntry) {
