@@ -43,13 +43,17 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
     },
 
     salvarSolicitacao: function() {
-
-        var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
-        interessadoLocalStore.addListener('load', this.handlerInteressado, this, {
-            single: true,
-            delay: 100
-        });
-        interessadoLocalStore.load();
+        var formSolicitacaoInstrucao = Ext.ComponentQuery.query("#formSolicitacaoInstrucao")[0];
+        if(formSolicitacaoInstrucao.down("#instrucao").getValue() == ''){
+            Ext.Msg.alert('Alerta', 'Informe a instrução inicial ' + error.message, Ext.emptyFn);
+        }else{
+            var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
+            interessadoLocalStore.addListener('load', this.handlerInteressado, this, {
+                single: true,
+                delay: 100
+            });
+            interessadoLocalStore.load();
+        }
     },
 
     handlerInteressado : function(_this, records, successful, operation, eOpts ) {
@@ -57,6 +61,16 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         var proxy = salvarSolicitacaoStore.getProxy();
         var formSolicitacao = Ext.ComponentQuery.query("#idSolicitacaoFieldset")[0];
         var formSolicitacaoInstrucao = Ext.ComponentQuery.query("#formSolicitacaoInstrucao")[0];
+
+        //evento que será executado somente se Solicitação for Success
+        salvarSolicitacaoStore.addListener('limparCamposForm', function(){
+                formSolicitacao.down("#cdTipoProcesso").setValue('');
+                formSolicitacaoInstrucao.down("#instrucao").setValue('');
+                formSolicitacao.down("#latitude").setValue('');
+                formSolicitacao.down("#longitude").setValue('');
+                formSolicitacao.down("#endereco").setValue('');
+                formSolicitacaoInstrucao.down("#foto").setValue('');
+        });
 
         salvarSolicitacaoStore.solicitar(records[0].data.idInteressado,
             formSolicitacao.down("#cdTipoProcesso").getValue(),

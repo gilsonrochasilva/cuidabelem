@@ -34,6 +34,7 @@ Ext.define('CuidaBelem.controller.MeusDadosController', {
         interessadoLocalStore.sync();
 
         Ext.Msg.alert('Mensagem', 'Salvo com sucesso.', Ext.emptyFn);
+        this.refreshListaMinhasSolicitacos(interessado.idInteressado);
     },
 
     voltarParaHome : function () {
@@ -53,5 +54,10 @@ Ext.define('CuidaBelem.controller.MeusDadosController', {
 
     handlerBucarPorCpf : function (_this, records, successful, operation, eOpts ) {
         this.getMeusDadosView().setInteressado(records[0].data);
+    },
+
+    refreshListaMinhasSolicitacos: function (idInteressado){
+        this.getApplication().getController('HomeController').carregarMinhasSolicitacoes();
+        this.getApplication().getController('UltimasSolicitacoesController').carregar();
     }
 });

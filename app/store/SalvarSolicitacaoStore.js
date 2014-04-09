@@ -40,7 +40,9 @@ Ext.define('CuidaBelem.store.SalvarSolicitacaoStore',{
                 Ext.Msg.alert('Alerta', 'Erro ao tentar fazer a consulta. Por favor, verifique sua conexão com a internet.', Ext.emptyFn);
             }else{
                 Ext.Msg.alert('Sucesso', 'Solicitação salva com sucesso!', Ext.emptyFn);
+                this.fireEvent('limparCamposForm', this);
             }
         }, this);
     }
+
 });

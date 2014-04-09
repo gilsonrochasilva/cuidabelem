@@ -38,12 +38,8 @@ Ext.define('CuidaBelem.controller.HomeController', {
     launch: function() {
         var servicosStore = Ext.getStore('ServicosStore');
         servicosStore.load();
-        var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
-        interessadoLocalStore.addListener('load', this.handlerInteressado, this, {
-            single: true,
-            delay: 100
-        });
-        interessadoLocalStore.load();
+
+        this.carregarMinhasSolicitacoes();
 
         /*var me = this;
 
@@ -72,6 +68,15 @@ Ext.define('CuidaBelem.controller.HomeController', {
             }
         , false);
         */
+    },
+
+    carregarMinhasSolicitacoes: function(){
+        var interessadoLocalStore = Ext.getStore('InteressadoLocalStore');
+        interessadoLocalStore.addListener('load', this.handlerInteressado, this, {
+            single: true,
+            delay: 100
+        });
+        interessadoLocalStore.load();
     },
 
     abrirMeusDados : function () {
@@ -109,11 +114,16 @@ Ext.define('CuidaBelem.controller.HomeController', {
         this.getMainView().avancar(2);
     },
     handlerInteressado : function(_this, records, successful, operation, eOpts ){
-        var minhasSolicitacoesStore = Ext.getStore('MinhasSolicitacoesStore');
-        var proxy = minhasSolicitacoesStore.getProxy();
+        if(records[0].data.idInteressado == null || records[0].data.idInteressado == ''){
+            Ext.Msg.alert('Novo Usuário', 'Por favor, informe seus dados.', Ext.emptyFn);
+            this.getMainView().avancar(1);
+        }else{
+            var minhasSolicitacoesStore = Ext.getStore('MinhasSolicitacoesStore');
+            var proxy = minhasSolicitacoesStore.getProxy();
 
-        proxy.setExtraParam('idinteressado', records[0].data.idInteressado);
-        minhasSolicitacoesStore.load();
+            proxy.setExtraParam('idinteressado', records[0].data.idInteressado);
+            minhasSolicitacoesStore.load();
+        }
     },
 
     acompanharProcesso: function(view, record){
@@ -123,7 +133,7 @@ Ext.define('CuidaBelem.controller.HomeController', {
             single: true,
             delay: 100
         });
-        acompanhaProcessoStore.buscarProcesso(record.get('idProcesso'))
+        acompanhaProcessoStore.buscarProcesso(record.get('idProcesso'));
         this.getMainView().avancar(6);
     },
 
