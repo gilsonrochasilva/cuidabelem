@@ -112,9 +112,11 @@ Ext.define('CuidaBelem.controller.HomeController', {
         Ext.Viewport.hideMenu('left');
         this.getSolicitacaoView().setCdTipoProcesso(record.get('cdTipoprocesso'));
         this.getMainView().avancar(2);
+        this.getListSolicitacoes().deselectAll();
     },
     handlerInteressado : function(_this, records, successful, operation, eOpts ){
-        if(records[0].data.idInteressado == null || records[0].data.idInteressado == ''){
+        console.log(records);
+        if(records.length == 0 || records[0].data.idInteressado == null || records[0].data.idInteressado == ''){
             Ext.Msg.alert('Novo Usuário', 'Por favor, informe seus dados.', Ext.emptyFn);
             this.getMainView().avancar(1);
         }else{
@@ -133,7 +135,8 @@ Ext.define('CuidaBelem.controller.HomeController', {
             single: true,
             delay: 100
         });
-        acompanhaProcessoStore.buscarProcesso(record.get('idProcesso'));
+        acompanhaProcessoStore.buscarProcesso(record.get('idProcesso'))
+        this.getListaMinhasSolicitacoes().deselectAll();
         this.getMainView().avancar(6);
     },
 

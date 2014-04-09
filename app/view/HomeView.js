@@ -56,6 +56,8 @@ Ext.define('CuidaBelem.view.HomeView', {
                     {
                         id: 'listSolicitacoes',
                         xtype: 'list',
+                        //mode : 'SINGLE',
+                        //allowDeselect : true,
                         title: 'Solicitações',
                         iconCls: 'more',
                         store: 'ServicosStore',

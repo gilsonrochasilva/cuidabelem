@@ -27,6 +27,7 @@ Ext.define('CuidaBelem.view.MeusDadosView', {
             align: 'center',
             type: 'vbox'
         },
+        scrollable: 'vertical',
         items: [
             {
                 xtype: 'titlebar',

@@ -16,6 +16,7 @@ Ext.define('CuidaBelem.view.AcompanhaProcessoView', {
             align: 'center',
             type: 'vbox'
         },
+        scrollable: 'vertical',
         items: [
             {
                 xtype: 'titlebar',
@@ -41,7 +42,7 @@ Ext.define('CuidaBelem.view.AcompanhaProcessoView', {
                 items: [
                     {
                         xtype: 'textfield',
-                        label: 'Servico',
+                        label: 'Serviço',
                         itemId: 'nmServico'
                     },
                     {

@@ -90,11 +90,12 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
                         xtype: 'spacer'
                     },
                     {
+                        id : 'btAnexarFoto',
                         xtype: 'button',
                         margin: '',
                         width: '49%',
                         model : false,
-                        text: 'Anexar Foto',
+                        text: 'Anexar Foto'/*,
                         handler : function() {
                             var items = [
                                 {
@@ -124,7 +125,7 @@ Ext.define('CuidaBelem.view.SolicitacaoView', {
 
                             Ext.Viewport.add(this.actions);
                             this.actions.show();
-                        }
+                        }*/
                     }
                 ]
             },

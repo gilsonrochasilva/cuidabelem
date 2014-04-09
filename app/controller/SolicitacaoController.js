@@ -11,7 +11,8 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
             btMapaSolicitacao : '#btMapaSolicitacao',
             mapaView : '#mapaView',
             btFotoGaleria : '#btFotoGaleria',
-            btTirarFoto : '#btTirarFoto'
+            btTirarFoto : '#btTirarFoto',
+            btAnexarFoto : '#btAnexarFoto'
 
         },
 
@@ -32,7 +33,11 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
                 tap : 'abrirGaleria'
             },
 
-            btTirarFoto : {
+            /*btTirarFoto : {
+                tap : 'tirarFoto'
+            }*/
+
+            btAnexarFoto : {
                 tap : 'tirarFoto'
             }
         }
@@ -149,7 +154,9 @@ Ext.define('CuidaBelem.controller.SolicitacaoController', {
         };
 
         var options = {
-            quality: 40,
+            //quality: 100,
+            targetWidth : 1000,
+            targetHeight : 1000,
             sourceType : navigator.camera.PictureSourceType.CAMERA,
             destinationType : navigator.camera.DestinationType.FILE_URI,
             encodingType: navigator.camera.EncodingType.JPEG,

@@ -31,7 +31,9 @@ Ext.define('CuidaBelem.controller.UltimasSolicitacoesController', {
             delay: 100
         });
 
-        ultimasSolicitacoesStore.listar(records[0].data.idInteressado);
+        if(records.length != 0) {
+            ultimasSolicitacoesStore.listar(records[0].data.idInteressado);
+        }
     },
 
     handlerAtualizarMapa : function(_this, records, successful, operation, eOpts ) {
